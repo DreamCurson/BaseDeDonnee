@@ -39,7 +39,7 @@ $crud = new CRUD;
 
         <p class="formulaireConnection__signup">
             Pas encore inscrit ? 
-            <a href="inscription.html" class="formulaireConnection__link">S'inscrire</a>
+            <a href="inscription.php" class="formulaireConnection__link">S'inscrire</a>
         </p>
     </div>
 
