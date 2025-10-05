@@ -1,7 +1,5 @@
 <?php
-require_once('classes/CRUD.php');
-
-$crud = new CRUD;
+$erreur = $_GET['erreur'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +13,10 @@ $crud = new CRUD;
 <body class="formulaire__background ">
     <div class="formulaireInscription">
         <h1 class="formulaireInscription__titre">Inscription</h1>
+
+        <?php if ($erreur === 'nom'): ?>
+            <p class="formulaireInscription__erreur">Ce nom d'utilisateur est déjà utilisé.</p>
+        <?php endif; ?>
 
         <form class="formulaireInscription__form" action="inscription-store.php" method="post">
             <label class="formulaireInscription__label">
