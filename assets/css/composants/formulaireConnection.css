@@ -1,0 +1,82 @@
+.formulaire__background {
+  background-image: url("../../img/backgroud_connexion.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.formulaireConnection {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 2rem;
+  background-color: #f5fff5;
+  border: 2px solid #3c9a3c;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 100, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+.formulaireConnection__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulaireConnection__title {
+  text-align: center;
+  color: #2f7a2f;
+  margin-bottom: 1.5rem;
+}
+
+.formulaireConnection__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2f7a2f;
+  font-weight: bold;
+}
+
+.formulaireConnection__input {
+  width: 42ch;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #3c9a3c;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.formulaireConnection__input:focus {
+  outline: none;
+  border-color: #2f7a2f;
+  box-shadow: 0 0 5px rgba(47, 122, 47, 0.5);
+}
+
+.formulaireConnection__button {
+  padding: 0.8rem;
+  background-color: #3c9a3c;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formulaireConnection__button:hover {
+  background-color: #2f7a2f;
+}
+
+.formulaireConnection__signup {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.formulaireConnection__link {
+  color: #3c9a3c;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.formulaireConnection__link:hover {
+  text-decoration: underline;
+}
