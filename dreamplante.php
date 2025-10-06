@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['idUtilisateur'])) {
+    header('Location: connexion.php');
+    exit;
+}
+
+$nomUtilisateur = $_SESSION['nomUtilisateur'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,8 +26,8 @@
         </div>
 
         <div class="dreamplante__nav-droite">
-            <span class="dreamplante__utilisateur-nom">Nom utilisateur</span>
-            <button class="dreamplante__modifier">Modifier</button>
+            <span class="dreamplante__utilisateur-nom"> <?php echo ($nomUtilisateur); ?></span>
+            <a class="dreamplante__modifier" href="utilisateur-edit.php">Modifier</a>
             <button class="dreamplante__deconnexion">Déconnexion</button>
         </div>
     </nav>
