@@ -44,6 +44,11 @@ $erreur = $_GET['erreur'] ?? null;
                 Ce nom d'utilisateur est déjà utilisé
             </p>
         <?php endif; ?>
+        <?php if ($erreur === 'supprimer'): ?>
+            <p class="formulaireUtilisateur__erreur">
+                Impossible de supprimer l'utilisateur
+            </p>
+        <?php endif; ?>
 
         <form class="formulaireUtilisateur__form" action="utilisateur-store.php" method="post">
             <input type="hidden" name="idUtilisateur" value="<?= $idUtilisateur; ?>">

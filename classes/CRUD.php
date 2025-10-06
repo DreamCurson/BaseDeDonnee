@@ -36,19 +36,6 @@ class CRUD extends PDO{
         return $this->lastInsertId();
     }
 
-    public function delete($table, $value, $field = 'id'){
-
-        $sql = "DELETE FROM $table WHERE $field = :$field";
-        $stmt = $this->prepare($sql);
-        $stmt->bindValue(":$field", $value);
-        if($stmt->execute()){
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-
     public function update($table, $data, $field = "id") {
     $fieldName = "";
 
@@ -67,4 +54,16 @@ class CRUD extends PDO{
     return $stmt->execute();
     }
 
+    public function delete($table, $value, $field = 'id'){
+
+        $sql = "DELETE FROM $table WHERE $field = :$field";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(":$field", $value);
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }
