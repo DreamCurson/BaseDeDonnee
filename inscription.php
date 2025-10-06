@@ -14,7 +14,7 @@ $erreur = $_GET['erreur'] ?? null;
     <div class="formulaireInscription">
         <h1 class="formulaireInscription__titre">Inscription</h1>
 
-        <?php if ($erreur === 'nom'): ?>
+        <?php if ($erreur === 'nomUtilisateur'): ?>
             <p class="formulaireInscription__erreur">Ce nom d'utilisateur est déjà utilisé.</p>
         <?php endif; ?>
 
