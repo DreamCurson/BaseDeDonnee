@@ -64,6 +64,56 @@
   box-shadow: 0 1px #1b5e20;
 }
 
+.formulaireUtilisateur__bouton {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulaireUtilisateur__delete {
+  margin-top: 15px;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: none;
+  background-color: #a50202;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #5e1b1b;
+}
+
+.formulaireUtilisateur__delete:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #5e1b1b;
+}
+
+.formulaireUtilisateur__delete:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #5e1b1b;
+}
+
+.formulaireUtilisateur__confirmation {
+  display: none;
+  margin-top: 15px;
+  padding: 10px 15px;
+  font-size: 23px;
+  border-radius: 6px;
+  font-family: "gras", sans-serif;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  background-color: #ce6012;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #92440d;
+}
+
+.formulaireUtilisateur__confirmation:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #92440d;
+}
+
 .formulaireUtilisateur__erreur {
   color: red;
   font-weight: bold;

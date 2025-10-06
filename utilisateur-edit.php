@@ -29,6 +29,7 @@ $erreur = $_GET['erreur'] ?? null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DreamPlante | Modifier votre profil</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script type="module" src="assets/script/main.js"></script>
 </head>
 <body class="formulaire__background">
     <div class="formulaireUtilisateur">
@@ -61,6 +62,10 @@ $erreur = $_GET['erreur'] ?? null;
             </label>
             <button type="submit" class="formulaireUtilisateur__button">Enregistrer</button>
         </form>
+        <div class="formulaireUtilisateur__bouton">
+            <button type="button" class="formulaireUtilisateur__delete">Supprimer le compte</button>
+            <a href="utilisateur-delete.php" class="formulaireUtilisateur__confirmation">Vous êtes sûr ?</a>
+        </div>
     </div>
 </body>
 </html>
