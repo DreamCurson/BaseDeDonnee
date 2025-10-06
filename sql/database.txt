@@ -3,7 +3,7 @@ USE `planteWeb`;
 
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `idUtilisateur` INT NOT NULL AUTO_INCREMENT,
-  `nomUtilisateur` VARCHAR(45) NOT NULL,
+  `nomUtilisateur` VARCHAR(45) NOT NULL UNIQUE,
   `email` VARCHAR(100) NULL,
   `motDePasse` VARCHAR(255) NOT NULL,
   `dateInscription` DATE NOT NULL DEFAULT (CURRENT_DATE),

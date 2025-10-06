@@ -29,7 +29,8 @@
 }
 
 .formulaireInscription__input {
-  padding: 0.5rem;
+  margin-top: 5px;
+  padding: 0.7rem;
   border: 1px solid #2e7d32;
   border-radius: 6px;
 }

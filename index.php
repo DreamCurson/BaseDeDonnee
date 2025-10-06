@@ -1,7 +1,5 @@
 <?php
-require_once('classes/CRUD.php');
-
-$crud = new CRUD;
+$erreur = $_GET['erreur'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +13,12 @@ $crud = new CRUD;
 <body class="formulaire__background">
     <div class="formulaireConnection">
         <h2 class="formulaireConnection__title">Connexion</h2>
-        <form class="formulaireConnection__form">
+        <?php if ($erreur === 'connexion'): ?>
+            <p class="formulaireConnection__erreur">
+                Nom d'utilisateur ou mot de passe incorrect.
+            </p>
+        <?php endif; ?>
+        <form class="formulaireConnection__form" action="connexion-store.php" method="post">
             <label for="nomUtilisateur" class="formulaireConnection__label">Nom d'utilisateur</label>
             <input 
             type="text" 
