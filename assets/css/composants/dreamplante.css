@@ -1,0 +1,277 @@
+.dreamplante {
+  position: relative;
+  background-image: url("../../img/backgroud_connexion.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dreamplante::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.279);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dreamplante__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #a5d6a7;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 12px 12px;
+}
+
+.dreamplante__nav-gauche {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dreamplante__plante-nom {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1b5e20;
+}
+
+.dreamplante__ajouter {
+  font-size: 18px;
+  font-family: "bubble", sans-serif;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #388e3c;
+}
+
+.dreamplante__ajouter:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #388e3c;
+}
+
+.dreamplante__ajouter:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #388e3c;
+}
+
+.dreamplante__nav-droite {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  position: relative;
+}
+
+.dreamplante__utilisateur {
+  position: relative;
+  font-weight: bold;
+  color: #1b5e20;
+  cursor: pointer;
+}
+
+.dreamplante__user-actions {
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(-5px);
+}
+
+.dreamplante__utilisateur:hover .dreamplante__user-actions {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dreamplante__modifier {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  background-color: #66bb6a;
+  color: #fff;
+  box-shadow: 0 3px #4caf50;
+}
+
+.dreamplante__modifier:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #4caf50;
+}
+
+.dreamplante__modifier:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #4caf50;
+}
+
+.dreamplante__deconnexion {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  background-color: #f44336;
+  color: #fff;
+  box-shadow: 0 3px #d32f2f;
+}
+
+.dreamplante__deconnexion:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #d32f2f;
+}
+
+.dreamplante__deconnexion:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #d32f2f;
+}
+
+.boite {
+  border: 6px solid #e8f5e9;
+}
+
+.dreamplante__conteneur {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.dreamplante__plante,
+.dreamplante__evenements,
+.dreamplante__notes {
+  background-color: #eaf0e9ec;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dreamplante__plante {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.dreamplante__evenements {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.dreamplante__notes {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.dreamplante__plante-titre {
+  color: #2e7d32;
+}
+
+.dreamplante__evenements-titre {
+  color: #388e3c;
+}
+
+.dreamplante__notes-titre {
+  color: #388e3c;
+}
+
+@media (max-width: 900px) {
+  .dreamplante__conteneur {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .dreamplante__notes {
+    grid-column: 1;
+    grid-row: 3;
+  }
+}
+
+.dreamplante__ajouter {
+  font-size: 20px;
+  font-family: "bubble", sans-serif;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #388e3c;
+}
+
+.dreamplante__ajouter:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #388e3c;
+}
+
+.dreamplante__ajouter:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #388e3c;
+}
+
+.dreamplante__retirer {
+  font-size: 20px;
+  font-family: "bubble", sans-serif;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #f44336;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #d32f2f;
+}
+
+.dreamplante__retirer:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #d32f2f;
+}
+
+.dreamplante__retirer:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #d32f2f;
+}
+
+.dreamplante__entete {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dreamplante__modif {
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  background-color: #42a5f5;
+  cursor: pointer;
+  box-shadow: 0 3px #1e88e5;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dreamplante__modif img.dreamplante__modif-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.dreamplante__modif:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #1e88e5;
+}
+.dreamplante__modif:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #1e88e5;
+}
