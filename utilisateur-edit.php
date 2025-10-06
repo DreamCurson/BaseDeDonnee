@@ -18,18 +18,32 @@ if (!$selectUser) {
 }
 
 extract($selectUser);
+
+$erreur = $_GET['erreur'] ?? null;
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier utilisateur</title>
+    <title>DreamPlante | Modifier votre profil</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="formulaire__background">
     <div class="formulaireUtilisateur">
         <h1 class="formulaireUtilisateur__title">Modifier votre profil</h1>
+        <?php if ($erreur === 'modificationUtilisateur'): ?>
+            <p class="formulaireUtilisateur__erreur">
+                La mise à jour des données a échoué
+            </p>
+        <?php endif; ?>
+        <?php if ($erreur === 'nomUtilisateur'): ?>
+            <p class="formulaireUtilisateur__erreur">
+                Ce nom d'utilisateur est déjà utilisé
+            </p>
+        <?php endif; ?>
+
         <form class="formulaireUtilisateur__form" action="utilisateur-store.php" method="post">
             <input type="hidden" name="idUtilisateur" value="<?= $idUtilisateur; ?>">
 

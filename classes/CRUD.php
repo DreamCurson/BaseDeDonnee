@@ -49,4 +49,22 @@ class CRUD extends PDO{
 
     }
 
+    public function update($table, $data, $field = "id") {
+    $fieldName = "";
+
+    foreach($data as $key => $value){
+        $fieldName .= "$key = :$key, ";
+    }
+    $fieldName = rtrim($fieldName, ', ');
+
+    $sql = "UPDATE $table SET $fieldName WHERE $field = :$field";
+    $stmt = $this->prepare($sql);
+
+    foreach($data as $key => $value){
+        $stmt->bindValue(":$key", $value);
+    }
+
+    return $stmt->execute();
+    }
+
 }
