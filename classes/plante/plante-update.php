@@ -1,3 +1,25 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    header('Location: ../../dreamplante.php');
+    exit;
+}
 
-echo "allo";
+session_start();
+
+require_once('../CRUD.php');
+$crud = new CRUD;
+
+try {
+    $update = $crud->update('plante', $_POST, 'idPlante');
+
+    if ($update) {
+        header('Location: ../../dreamplante.php');
+        exit;
+    } else {
+        header('Location: plante-edit.php?id=' . $_POST['idPlante'] . '&erreur=modificationPlante');
+        exit;
+    }
+} catch (PDOException $e) {
+    header('Location: plante-edit.php?id=' . $_POST['idPlante'] . '&erreur=modificationPlante');
+    exit;
+}
