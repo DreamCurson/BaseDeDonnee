@@ -62,9 +62,9 @@ $plantes = $crud->selectWhere('plante', 'utilisateur_idUtilisateur', $idUtilisat
                 <?php foreach ($plantes as $plante): ?>
                     <div class="dreamplante__entete">
                         <h2 class="dreamplante__plante-titre"><?= ($plante['nom']); ?></h2>
-                        <button class="bouton__modifier">
+                        <a href="classes/plante/plante-edit.php?id=<?= $plante['idPlante']; ?>" class="bouton__modifier">
                             <img src="assets/img/edit.png" alt="Modifier" class="bouton__modifier-icon">
-                        </button>
+                        </a>
                     </div>
                     <div class="dreamplante__plante-contenu">
                         <p>Type : <?= ($plante['typePlante']); ?></p>

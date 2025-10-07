@@ -45,7 +45,7 @@ $erreur = $_GET['erreur'] ?? null;
             </p>
         <?php endif; ?>
 
-        <form class="formulaireUtilisateur__form" action="utilisateur-store.php" method="post">
+        <form class="formulaireUtilisateur__form" action="utilisateur-update.php" method="post">
             <input type="hidden" name="idUtilisateur" value="<?= $idUtilisateur; ?>">
 
             <label class="formulaireUtilisateur__label">
