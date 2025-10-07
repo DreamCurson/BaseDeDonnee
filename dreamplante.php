@@ -17,6 +17,8 @@ $idUtilisateur = $_SESSION['idUtilisateur'];
 $plantes = $crud->selectWhere('plante', 'utilisateur_idUtilisateur', $idUtilisateur);
 
 // var_dump($plantes);
+
+$erreur = $_GET['erreur'] ?? null;
 ?>
 
 
@@ -29,6 +31,15 @@ $plantes = $crud->selectWhere('plante', 'utilisateur_idUtilisateur', $idUtilisat
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="dreamplante">
+    <?php if ($erreur === 'supprimer'): ?>
+        <dialog open id="warningDialog">
+            Échec lors de la suppression d'une plante
+            <form method="dialog">
+                <button>Fermer</button>
+            </form>
+        </dialog>
+    <?php endif; ?>
+
     <nav class="dreamplante__nav">
         <div class="dreamplante__nav-gauche">
             <?php if (empty($plantes)): ?>

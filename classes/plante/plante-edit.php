@@ -26,6 +26,8 @@ if ($plante['utilisateur_idUtilisateur'] != $idUtilisateur) {
 
 extract($plante);
 
+$erreur = $_GET['erreur'] ?? null;
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +42,11 @@ extract($plante);
 <body class="formulaire__background">
     <div class="formulaireUtilisateur">
         <h1 class="formulaireUtilisateur__title">Modifier la plante</h1>
-
+        <?php if ($erreur === 'modification'): ?>
+            <p class="formulaireUtilisateur__erreur">
+                Une erreur est survenue lors de la modification.
+            </p>
+        <?php endif; ?>
         <form class="formulaireUtilisateur__form" action="plante-update.php" method="post">
             <input type="hidden" name="idPlante" value="<?= ($idPlante); ?>">
 

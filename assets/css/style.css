@@ -6,6 +6,8 @@
 @import url("composants/dreamplante.css");
 @import url("composants/bouton.css");
 
+@import url("composants/warning.css");
+
 @font-face {
   font-family: "bubble";
   src: url("../fonts/Super\ Joyful.ttf") format("truetype");
