@@ -34,9 +34,23 @@
 }
 
 .dreamplante__plante-nom {
+  text-decoration: none;
+  background: none;
+  border: none;
   font-size: 20px;
   font-weight: bold;
-  color: #1b5e20;
+  color: #144717;
+  transition: ease-in-out 300ms;
+  cursor: pointer;
+}
+
+.dreamplante__plante-nom:hover {
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #04810d;
 }
 
 .dreamplante__ajouter {
@@ -210,6 +224,7 @@
   font-size: 26px;
   color: #2e7d32;
   margin: 0;
+  cursor: default;
 }
 
 .dreamplante__aucune {
@@ -253,6 +268,7 @@
 }
 
 .dreamplante__plante-contenu {
+  cursor: default;
   display: flex;
   flex-direction: column;
   margin-top: 15px;
