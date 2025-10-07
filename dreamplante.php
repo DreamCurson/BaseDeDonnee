@@ -27,8 +27,8 @@ $nomUtilisateur = $_SESSION['nomUtilisateur'];
 
         <div class="dreamplante__nav-droite">
             <span class="dreamplante__utilisateur-nom"> <?php echo ($nomUtilisateur); ?></span>
-            <a class="dreamplante__modifier" href="utilisateur-edit.php">Modifier</a>
-            <button class="dreamplante__deconnexion">Déconnexion</button>
+            <a class="dreamplante__modifier" href="classes/utilisateur/utilisateur-edit.php">Modifier</a>
+            <a class="dreamplante__deconnexion" href="classes/utilisateur/utilisateur-deconnexion.php">Déconnexion</a>
         </div>
     </nav>
 

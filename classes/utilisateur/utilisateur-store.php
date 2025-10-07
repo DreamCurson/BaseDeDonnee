@@ -1,12 +1,12 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    header('Location: dreamplante.php');
+    header('Location: ../../dreamplante.php');
     exit;
 }
 
 session_start();
 
-require_once('classes/CRUD.php');
+require_once('../CRUD.php');
 $crud = new CRUD;
 
 try {
@@ -17,7 +17,7 @@ try {
             $_SESSION['nomUtilisateur'] = $_POST['nomUtilisateur'];
         }
 
-        header('Location: dreamplante.php');
+        header('Location: ../../dreamplante.php');
         exit;
     } else {
         header('Location: utilisateur-edit.php?erreur=modificationUtilisateur');

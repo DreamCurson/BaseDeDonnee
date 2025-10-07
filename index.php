@@ -42,7 +42,7 @@ $erreur = $_GET['erreur'] ?? null;
 
         <p class="formulaireConnection__signup">
             Pas encore inscrit ? 
-            <a href="inscription.php" class="formulaireConnection__link">S'inscrire</a>
+            <a href="classes/inscription/inscription.php" class="formulaireConnection__link">S'inscrire</a>
         </p>
     </div>
 

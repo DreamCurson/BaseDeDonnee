@@ -1,11 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['idUtilisateur'])) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit;
 }
 
-require_once('classes/CRUD.php');
+require_once('../CRUD.php');
 $crud = new CRUD;
 
 $idUtilisateur = $_SESSION['idUtilisateur'];
@@ -13,7 +13,7 @@ $idUtilisateur = $_SESSION['idUtilisateur'];
 $selectUser = $crud->selectId('utilisateur', $idUtilisateur, 'idUtilisateur');
 
 if (!$selectUser) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit;
 }
 
@@ -28,18 +28,13 @@ $erreur = $_GET['erreur'] ?? null;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DreamPlante | Modifier votre profil</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script type="module" src="assets/script/main.js"></script>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <script type="module" src="../../assets/script/main.js"></script>
 </head>
 <body class="formulaire__background">
     <div class="formulaireUtilisateur">
         <h1 class="formulaireUtilisateur__title">Modifier votre profil</h1>
-        <?php if ($erreur === 'modificationUtilisateur'): ?>
-            <p class="formulaireUtilisateur__erreur">
-                La mise à jour des données a échoué
-            </p>
-        <?php endif; ?>
-        <?php if ($erreur === 'nomUtilisateur'): ?>
+        <?php if ($erreur === 'nomUtilisateur' || $erreur === 'modificationUtilisateur'): ?>
             <p class="formulaireUtilisateur__erreur">
                 Ce nom d'utilisateur est déjà utilisé
             </p>
