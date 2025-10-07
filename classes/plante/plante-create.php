@@ -15,7 +15,7 @@ $erreur = $_GET['erreur'] ?? null;
         <h2 class="formulairePlante__titre">Ajouter votre plante</h2>
 
         <?php if ($erreur === 'erreurDonnee'): ?>
-            <p class="formulairePlante__erreur">Ce nom d'utilisateur est déjà utilisé.</p>
+            <p class="formulairePlante__erreur">Erreur dans l'entrée de données</p>
         <?php endif; ?>
 
         <form class="formulairePlante__form" action="plante-store.php" method="post">
