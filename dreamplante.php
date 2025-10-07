@@ -6,7 +6,17 @@ if (!isset($_SESSION['idUtilisateur'])) {
     exit;
 }
 
+require_once('classes/CRUD.php');
+$crud = new CRUD;
+
 $nomUtilisateur = $_SESSION['nomUtilisateur'];
+$idUtilisateur = $_SESSION['idUtilisateur'];
+
+// var_dump($idUtilisateur);
+
+$plantes = $crud->selectWhere('plante', 'utilisateur_idUtilisateur', $idUtilisateur);
+
+// var_dump($plantes);
 ?>
 
 
@@ -21,8 +31,16 @@ $nomUtilisateur = $_SESSION['nomUtilisateur'];
 <body class="dreamplante">
     <nav class="dreamplante__nav">
         <div class="dreamplante__nav-gauche">
-            <p class="dreamplante__plante-nom">Nom plante</p>
-            <button class="dreamplante__ajouter">+</button>
+            <?php if (empty($plantes)): ?>
+                <div class="dreamplante__nav_aucune">
+                    <p>Ajouter une plante</p>
+                </div>
+            <?php else: ?>
+                <?php foreach ($plantes as $plante): ?>
+                    <p class="dreamplante__plante-nom"><?= ($plante['nom']); ?></p>
+                <?php endforeach; ?>
+             <?php endif; ?>
+            <button class="bouton__ajouter">+</button>
         </div>
 
         <div class="dreamplante__nav-droite">
@@ -35,21 +53,33 @@ $nomUtilisateur = $_SESSION['nomUtilisateur'];
 
     <main class="dreamplante__conteneur">
         <section class="dreamplante__plante boite">
-            <div class="dreamplante__entete">
-                <h2 class="dreamplante__plante-titre">nom plante</h2>
-                <button class="dreamplante__modif">
-                    <img src="assets/img/edit.png" alt="Modifier" class="dreamplante__modif-icon">
-                </button>
-            </div>
-            <div class="dreamplante__plante-contenu">
-                <!-- Contenu des plantes -->
-            </div>
+            <?php if (empty($plantes)): ?>
+                <div class="dreamplante__aucune">
+                    <p>Ajouter une plante pour commencer</p>
+                    <button class="bouton__ajouter">+</button>
+                </div>
+            <?php else: ?>
+                <?php foreach ($plantes as $plante): ?>
+                    <div class="dreamplante__entete">
+                        <h2 class="dreamplante__plante-titre"><?= ($plante['nom']); ?></h2>
+                        <button class="bouton__modifier">
+                            <img src="assets/img/edit.png" alt="Modifier" class="bouton__modifier-icon">
+                        </button>
+                    </div>
+                    <div class="dreamplante__plante-contenu">
+                        <p>Type : <?= ($plante['typePlante']); ?></p>
+                        <p>Acquise le : <?= ($plante['dateAcquisition']); ?></p>
+                        <p>Age : </p>
+                    </div>
+                <?php endforeach; ?>
+             <?php endif; ?>
         </section>
+
 
         <section class="dreamplante__evenements boite">
             <div class="dreamplante__entete">
                 <h2 class="dreamplante__evenements-titre">Événements</h2>
-                <button class="dreamplante__ajouter">+</button>
+                <button class="bouton__ajouter">+</button>
             </div>
             <div class="dreamplante__evenements-contenu">
                 <!-- Contenu des événements -->
@@ -59,9 +89,8 @@ $nomUtilisateur = $_SESSION['nomUtilisateur'];
         <aside class="dreamplante__notes boite">
             <div class="dreamplante__entete">
                 <h2 class="dreamplante__notes-titre">Notes</h2>
-                <button class="dreamplante__ajouter">+</button>
+                <button class="bouton__ajouter">+</button>
             </div>
-            <!-- <button class="dreamplante__retirer">-</button> -->
 
             <div class="dreamplante__notes-contenu">
                 <!-- Notes utilisateur -->

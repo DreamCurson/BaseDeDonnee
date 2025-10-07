@@ -94,27 +94,6 @@
   transform: translateY(0);
 }
 
-.dreamplante__modifier {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 6px;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-  background-color: #66bb6a;
-  color: #fff;
-  box-shadow: 0 3px #4caf50;
-  text-decoration: none;
-}
-
-.dreamplante__modifier:hover {
-  transform: translateY(1px);
-  box-shadow: 0 2px #4caf50;
-}
-
-.dreamplante__modifier:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px #4caf50;
-}
-
 .dreamplante__deconnexion {
   text-decoration: none;
   padding: 5px 10px;
@@ -146,21 +125,7 @@
   grid-template-rows: 1fr 1fr;
   gap: 1.5rem;
   padding: 2rem;
-  min-height: 100vh;
-}
-
-.dreamplante__plante,
-.dreamplante__evenements,
-.dreamplante__notes {
-  background-color: #eaf0e9ec;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.dreamplante__plante {
-  grid-column: 1;
-  grid-row: 1;
+  min-height: fit-content;
 }
 
 .dreamplante__evenements {
@@ -171,10 +136,6 @@
 .dreamplante__notes {
   grid-column: 2;
   grid-row: 1 / span 2;
-}
-
-.dreamplante__plante-titre {
-  color: #2e7d32;
 }
 
 .dreamplante__evenements-titre {
@@ -197,52 +158,6 @@
   }
 }
 
-.dreamplante__ajouter {
-  font-size: 20px;
-  font-family: "bubble", sans-serif;
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: none;
-  background-color: #4caf50;
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-  box-shadow: 0 3px #388e3c;
-}
-
-.dreamplante__ajouter:hover {
-  transform: translateY(1px);
-  box-shadow: 0 2px #388e3c;
-}
-
-.dreamplante__ajouter:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px #388e3c;
-}
-
-.dreamplante__retirer {
-  font-size: 20px;
-  font-family: "bubble", sans-serif;
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: none;
-  background-color: #f44336;
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-  box-shadow: 0 3px #d32f2f;
-}
-
-.dreamplante__retirer:hover {
-  transform: translateY(1px);
-  box-shadow: 0 2px #d32f2f;
-}
-
-.dreamplante__retirer:active {
-  transform: translateY(2px);
-  box-shadow: 0 1px #d32f2f;
-}
-
 .dreamplante__entete {
   display: flex;
   flex-direction: row;
@@ -250,29 +165,99 @@
   align-items: center;
 }
 
-.dreamplante__modif {
-  padding: 6px;
-  border-radius: 6px;
+.dreamplante__modifier {
+  padding: 5px 10px;
   border: none;
-  background-color: #42a5f5;
-  cursor: pointer;
-  box-shadow: 0 3px #1e88e5;
+  border-radius: 6px;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #66bb6a;
+  color: #fff;
+  box-shadow: 0 3px #4caf50;
+  text-decoration: none;
 }
 
-.dreamplante__modif img.dreamplante__modif-icon {
-  width: 25px;
-  height: 25px;
-}
-
-.dreamplante__modif:hover {
+.dreamplante__modifier:hover {
   transform: translateY(1px);
-  box-shadow: 0 2px #1e88e5;
+  box-shadow: 0 2px #4caf50;
 }
-.dreamplante__modif:active {
+
+.dreamplante__modifier:active {
   transform: translateY(2px);
-  box-shadow: 0 1px #1e88e5;
+  box-shadow: 0 1px #4caf50;
+}
+
+/* --------------------------------------------- */
+
+.dreamplante__plante,
+.dreamplante__evenements,
+.dreamplante__notes {
+  background-color: #eaf0e9ec;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section plante */
+
+.dreamplante__plante {
+  max-height: 150px;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.dreamplante__plante-titre {
+  font-family: "gras", sans-serif;
+  font-size: 26px;
+  color: #2e7d32;
+  margin: 0;
+}
+
+.dreamplante__aucune {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  color: #388e3c;
+  font-family: "gras", sans-serif;
+  font-size: 20px;
+}
+
+.dreamplante__ajouter {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 24px;
+  font-family: "bubble", sans-serif;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #2e7d32;
+}
+
+.dreamplante__ajouter:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #2e7d32;
+}
+
+.dreamplante__ajouter:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #2e7d32;
+}
+
+.dreamplante__entete {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dreamplante__plante-contenu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  gap: 10px;
+  text-align: left;
+  font-size: 18px;
+  color: #333;
 }

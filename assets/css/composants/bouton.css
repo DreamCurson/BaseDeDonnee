@@ -1,0 +1,86 @@
+/* 
+<button class="bouton__modifier">
+    <img src="assets/img/edit.png" alt="Modifier" class="bouton__modifier-icon">
+</button> 
+*/
+/* <button class="bouton__ajouter">+</button> */
+/* <button class="bouton__retirer">-</button> */
+
+/* ----- Ajouter ----- */
+
+.bouton__ajouter {
+  font-size: 20px;
+  font-family: "bubble", sans-serif;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #388e3c;
+}
+
+.bouton__ajouter:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #388e3c;
+}
+
+.bouton__ajouter:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #388e3c;
+}
+
+/* ----- Retirer ----- */
+
+.bouton__retirer {
+  font-size: 20px;
+  font-family: "bubble", sans-serif;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #f44336;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #d32f2f;
+}
+
+.bouton__retirer:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #d32f2f;
+}
+
+.bouton__retirer:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #d32f2f;
+}
+
+/* ----- Modifier ----- */
+
+.bouton__modifier {
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  background-color: #42a5f5;
+  cursor: pointer;
+  box-shadow: 0 3px #1e88e5;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bouton__modifier img.bouton__modifier-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.bouton__modifier:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #1e88e5;
+}
+.bouton__modifier:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #1e88e5;
+}
