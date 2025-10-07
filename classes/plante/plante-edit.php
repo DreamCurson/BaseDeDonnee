@@ -19,7 +19,7 @@ if (!$idPlante) {
 
 $plante = $crud->selectId('plante', $idPlante, 'idPlante');
 
-if (!$plante || $plante['utilisateur_idUtilisateur'] != $idUtilisateur) {
+if ($plante['utilisateur_idUtilisateur'] != $idUtilisateur) {
     header('Location: ../../dreamplante.php');
     exit;
 }
