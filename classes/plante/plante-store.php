@@ -1,22 +1,33 @@
 <?php
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    header('location: ../../dreamplante.php');
+    header('Location: ../../dreamplante.php');
     exit;
 }
 
 require_once('../CRUD.php');
-
 $crud = new CRUD;
 
-echo "allo";
+if (!isset($_SESSION['idUtilisateur'])) {
+    header('Location: ../../index.php');
+    exit;
+}
 
-// try {
-//     $insert = $crud->insert('', $_POST);
-//     header("Location: ../../dreamplante.php");
-//     exit;
-// } catch (PDOException $e) {
-//     if ($e->getCode() == 23000) {
-//         header("Location: inscription.php?erreur=erreurDonnee");
-//         exit;
-//     }
-// }
+$idUtilisateur = $_SESSION['idUtilisateur'];
+
+$data = [
+    'nom' => $_POST['nom'],
+    'typePlante' => $_POST['typePlante'] ?? null,
+    'dateAcquisition' => $_POST['dateAcquisition'],
+    'utilisateur_idUtilisateur' => $idUtilisateur
+];
+
+try {
+    $insert = $crud->insert('plante', $data);
+    header('Location: ../../dreamplante.php');
+    exit;
+} catch (PDOException $e) {
+    header('Location: plante-create.php?erreur=erreurDonnee');
+    exit;
+}

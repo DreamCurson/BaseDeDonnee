@@ -12,7 +12,7 @@ $erreur = $_GET['erreur'] ?? null;
 </head>
 <body class="formulaire__background ">
     <div class="formulairePlante">
-        <h2 class="formulairePlante__titre">Inscription</h2>
+        <h2 class="formulairePlante__titre">Ajouter votre plante</h2>
 
         <?php if ($erreur === 'erreurDonnee'): ?>
             <p class="formulairePlante__erreur">Ce nom d'utilisateur est déjà utilisé.</p>
