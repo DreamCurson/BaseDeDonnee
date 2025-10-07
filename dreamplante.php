@@ -40,7 +40,7 @@ $plantes = $crud->selectWhere('plante', 'utilisateur_idUtilisateur', $idUtilisat
                     <p class="dreamplante__plante-nom"><?= ($plante['nom']); ?></p>
                 <?php endforeach; ?>
              <?php endif; ?>
-            <button class="bouton__ajouter">+</button>
+            <a href="classes/plante/plante-create.php" class="bouton__ajouter">+</a>
         </div>
 
         <div class="dreamplante__nav-droite">
@@ -56,7 +56,7 @@ $plantes = $crud->selectWhere('plante', 'utilisateur_idUtilisateur', $idUtilisat
             <?php if (empty($plantes)): ?>
                 <div class="dreamplante__aucune">
                     <p>Ajouter une plante pour commencer</p>
-                    <button class="bouton__ajouter">+</button>
+                    <a href="classes/plante/plante-create.php" class="bouton__ajouter">+</a>
                 </div>
             <?php else: ?>
                 <?php foreach ($plantes as $plante): ?>

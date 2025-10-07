@@ -1,7 +1,9 @@
 @import url("composants/formulaireConnection.css");
 @import url("composants/formulaireInscription.css");
-@import url("composants/dreamplante.css");
+@import url("composants/formulairePlante.css");
 @import url("composants/formulaireUtilisateur.css");
+
+@import url("composants/dreamplante.css");
 @import url("composants/bouton.css");
 
 @font-face {
