@@ -48,7 +48,6 @@ $erreur = $_GET['erreur'] ?? null;
     <div class="dreamplante__nav-gauche">
         <?php if (empty($plantes)): ?>
             <div class="dreamplante__nav_aucune">
-                <p>Ajouter une plante</p>
             </div>
         <?php else: ?>
             <?php foreach ($plantes as $plante): ?>
@@ -64,7 +63,7 @@ $erreur = $_GET['erreur'] ?? null;
     </div>
 
     <div class="dreamplante__nav-droite">
-        <span class="dreamplante__utilisateur-nom"><?= htmlspecialchars($nomUtilisateur) ?></span>
+        <span class="dreamplante__utilisateur-nom"><?= ($nomUtilisateur) ?></span>
         <a class="dreamplante__modifier" href="classes/utilisateur/utilisateur-edit.php">Modifier</a>
         <a class="dreamplante__deconnexion" href="classes/utilisateur/utilisateur-deconnexion.php">Déconnexion</a>
     </div>
@@ -74,14 +73,14 @@ $erreur = $_GET['erreur'] ?? null;
     <section class="dreamplante__plante boite">
         <?php if ($idPlante && $planteSelectionnee): ?>
             <div class="dreamplante__entete">
-                <h2 class="dreamplante__plante-titre"><?= htmlspecialchars($planteSelectionnee['nom']) ?></h2>
+                <h2 class="dreamplante__plante-titre"><?= ($planteSelectionnee['nom']) ?></h2>
                 <a href="classes/plante/plante-edit.php?id=<?= $planteSelectionnee['idPlante']; ?>" class="bouton__modifier">
                     <img src="assets/img/edit.png" alt="Modifier" class="bouton__modifier-icon">
                 </a>
             </div>
             <div class="dreamplante__plante-contenu">
-                <p>Type : <?= htmlspecialchars($planteSelectionnee['typePlante']); ?></p>
-                <p>Acquise le : <?= htmlspecialchars($planteSelectionnee['dateAcquisition']); ?></p>
+                <p>Type : <?= ($planteSelectionnee['typePlante']); ?></p>
+                <p>Acquise le : <?= ($planteSelectionnee['dateAcquisition']); ?></p>
                 <p>Âge : </p>
             </div>
 

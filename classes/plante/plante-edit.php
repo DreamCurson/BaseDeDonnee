@@ -9,14 +9,21 @@ if (!isset($_SESSION['idUtilisateur'])) {
 require_once('../CRUD.php');
 $crud = new CRUD;
 
-$idPlante = $_GET['id'] ?? null;
 $idUtilisateur = $_SESSION['idUtilisateur'];
 
-if (!$idPlante) {
+if (isset($_GET['id'])) {
+    $_SESSION['planteEdition'] = (int)$_GET['id'];
+
+    header('Location: plante-edit.php');
+    exit;
+}
+
+if (!isset($_SESSION['planteEdition'])) {
     header('Location: ../../dreamplante.php');
     exit;
 }
 
+$idPlante = $_SESSION['planteEdition'];
 $plante = $crud->selectId('plante', $idPlante, 'idPlante');
 
 if ($plante['utilisateur_idUtilisateur'] != $idUtilisateur) {
@@ -27,7 +34,6 @@ if ($plante['utilisateur_idUtilisateur'] != $idUtilisateur) {
 extract($plante);
 
 $erreur = $_GET['erreur'] ?? null;
-
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +53,7 @@ $erreur = $_GET['erreur'] ?? null;
                 Une erreur est survenue lors de la modification.
             </p>
         <?php endif; ?>
+
         <form class="formulaireUtilisateur__form" action="plante-update.php" method="post">
             <input type="hidden" name="idPlante" value="<?= ($idPlante); ?>">
 
