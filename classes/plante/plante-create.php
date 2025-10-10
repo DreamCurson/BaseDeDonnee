@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['idUtilisateur'])) {
+    header('Location: ../../index.php');
+    exit;
+}
+
 $erreur = $_GET['erreur'] ?? null;
 ?>
 
