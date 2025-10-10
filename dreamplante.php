@@ -135,7 +135,7 @@ $erreur = $_GET['erreur'] ?? null;
     <section class="dreamplante__evenements boite">
         <div class="dreamplante__entete">
             <h2 class="dreamplante__evenements-titre">Événements</h2>
-            <button class="bouton__ajouter">+</button>
+            <a href="classes/evenements/evenements-create.php" class="bouton__ajouter">+</a>
         </div>
         <div class="dreamplante__evenements-contenu">
             <!-- Contenu des événements -->
