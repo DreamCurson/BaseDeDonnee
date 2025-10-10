@@ -20,6 +20,7 @@ $data = [
     'nom' => $_POST['nom'],
     'typePlante' => $_POST['typePlante'] ?? null,
     'dateAcquisition' => $_POST['dateAcquisition'],
+    // N'est pas dans le POST donc on ne peux pas simplement mettre $_POST dans le insert
     'utilisateur_idUtilisateur' => $idUtilisateur
 ];
 
