@@ -21,6 +21,42 @@ if ($idPlante) {
     $planteSelectionnee = $crud->selectId('plante', $idPlante, 'idPlante');
 }
 
+if (!empty($planteSelectionnee['dateAcquisition'])) {
+    $dateAcquisition = new DateTime($planteSelectionnee['dateAcquisition']);
+    $aujourdhui = new DateTime();
+    $interval = $dateAcquisition->diff($aujourdhui);
+    $ageParts = [];
+
+    // Si la plante a au moins 1 an,
+    // on ajoute le nombre d’années dans le tableau $ageParts.
+    // Exemple : "1 an" || "2 ans" ("s" si pluriel)
+    if ($interval->y > 0)
+    $ageParts[] = $interval->y . ' an' . ($interval->y > 1 ? 's' : '');
+
+
+    // Si la plante a au moins 1 mois,
+    // on ajoute le nombre de mois dans le tableau $ageParts.
+    // Exemple : "2 mois"
+    if ($interval->m > 0)
+    $ageParts[] = $interval->m . ' mois';
+
+
+    // Si la plante n’a pas encore un an complet (moins de 12 mois),
+    // et qu’il y a au moins 1 jour,
+    // on ajoute le nombre de jours dans le tableau $ageParts.
+    // "1 jour" || "2 jours" ("s" si pluriel)
+    if ($interval->d > 0 && $interval->y === 0)
+    $ageParts[] = $interval->d . ' jour' . ($interval->d > 1 ? 's' : '');
+
+    $ageTexte = implode(' ', $ageParts);
+
+    if (empty($ageTexte)) $ageTexte = "moins d’un jour";
+
+} else {
+    $ageTexte = "Date inconnue";
+}
+
+
 $erreur = $_GET['erreur'] ?? null;
 
 ?>
@@ -81,7 +117,7 @@ $erreur = $_GET['erreur'] ?? null;
             <div class="dreamplante__plante-contenu">
                 <p>Type : <?= ($planteSelectionnee['typePlante']); ?></p>
                 <p>Acquise le : <?= ($planteSelectionnee['dateAcquisition']); ?></p>
-                <p>Âge : </p>
+                <p>Âge : <?= ($ageTexte); ?></p>
             </div>
 
         <?php elseif (empty($plantes)): ?>
