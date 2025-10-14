@@ -37,7 +37,7 @@ $idPlante = $_SESSION['planteSelectionnee'];
             <label class="formulaire__label">
                 Type d’événement
                 <select name="idTypeEvenement" class="formulaire__input" required>
-                    <option value="">Sélectionnez un type</option>
+                    <option value="" disabled selected>Sélectionnez un type</option>
                     <?php foreach ($typesEvenement as $type): ?>
                         <option value="<?= $type['idTypeEvenement']; ?>">
                             <?= ($type['typeEvenement']); ?>
@@ -45,6 +45,7 @@ $idPlante = $_SESSION['planteSelectionnee'];
                     <?php endforeach; ?>
                 </select>
             </label>
+
 
             <label class="formulaire__label">
                 Commentaire

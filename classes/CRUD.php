@@ -32,6 +32,15 @@ class CRUD extends PDO{
         return $stmt->fetchAll();
     }
 
+    public function selectByDate($table, $field, $value, $dateField, $order = 'DESC') {
+        $sql = "SELECT * FROM $table WHERE $field = :$field ORDER BY $dateField $order";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(":$field", $value);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+
     public function insert($table, $data){
         $fieldName = implode(', ', array_keys($data));
         $fieldValue = ":".implode(', :', array_keys($data));

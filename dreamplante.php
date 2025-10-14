@@ -56,6 +56,10 @@ if (!empty($planteSelectionnee['dateAcquisition'])) {
     $ageTexte = "Date inconnue";
 }
 
+$evenements = [];
+if ($idPlante) {
+    $evenements = $crud->selectByDate('evenement', 'idPlante', $idPlante, 'date', 'DESC');
+}
 
 $erreur = $_GET['erreur'] ?? null;
 
@@ -133,14 +137,52 @@ $erreur = $_GET['erreur'] ?? null;
     </section>
 
     <section class="dreamplante__evenements boite">
-        <div class="dreamplante__entete">
-            <h2 class="dreamplante__evenements-titre">Événements</h2>
-            <a href="classes/evenements/evenements-create.php" class="bouton__ajouter">+</a>
-        </div>
-        <div class="dreamplante__evenements-contenu">
-            <!-- Contenu des événements -->
-        </div>
+        <?php if ($idPlante && $planteSelectionnee): ?>
+            <div class="dreamplante__entete">
+                <h2 class="dreamplante__evenements-titre">Événements</h2>
+                <a href="classes/evenements/evenements-create.php" class="bouton__ajouter">+</a>
+            </div>
+
+            <?php if (!empty($evenements)): ?>
+                <div class="dreamplante__evenements-contenu">
+                    <?php foreach ($evenements as $evenement): ?>
+                        <?php
+                        $type = $crud->selectId('typeEvenement', $evenement['idTypeEvenement'], 'idTypeEvenement');
+                        $typeNom = $type ? $type['typeEvenement'] : 'Type inconnu';
+                        $typeClass = strtolower(str_replace(' ', '', $typeNom));
+                        ?>
+                        <div class="dreamplante__evenement <?= ($typeClass); ?>">
+                            <div class="dreamplante__evenement_contenu">
+                                <p><strong><?= ($typeNom); ?></strong></p>
+                                <p><?= ($evenement['date']); ?></p>
+                                <p><?= ($evenement['commentaire']); ?></p>
+                            </div>
+                            <div class="dreamplante__evenement_bouton">
+                                <a href="classes/evenements/evenements-edit.php" class="bouton__modifier_petit">
+                                    <img src="assets/img/edit.png" alt="Modifier" class="bouton__modifier-icon">
+                                </a>
+                                <a href="classes/evenements/evenements-delete.php" class="bouton__retirer">-</a> 
+                            </div>              
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <div class="dreamplante__aucune">
+                    <p>Aucun événement pour cette plante</p>
+                </div>
+        <?php endif; ?>
+
+        <?php elseif (empty($plantes)): ?>
+            <div class="dreamplante__aucune">
+                <p>Ajouter une plante pour créer des événements</p>
+            </div>
+        <?php else: ?>
+            <div class="dreamplante__aucune">
+                <p>Sélectionnez une plante pour voir ses événements</p>
+            </div>
+        <?php endif; ?>
     </section>
+
 
     <aside class="dreamplante__notes boite">
         <div class="dreamplante__entete">
