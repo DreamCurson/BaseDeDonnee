@@ -202,7 +202,7 @@ $erreur = $_GET['erreur'] ?? null;
         <aside class="dreamplante__notes boite">
             <div class="dreamplante__entete">
                 <h2 class="dreamplante__notes-titre">Notes</h2>
-                <button class="bouton__ajouter">+</button>
+                <a href="classes/notes/notes-create.php" class="bouton__ajouter">+</a>
             </div>
             <div class="dreamplante__notes-contenu">
                 <!-- Notes utilisateur -->

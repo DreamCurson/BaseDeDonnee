@@ -10,7 +10,7 @@ require_once('../CRUD.php');
 $crud = new CRUD;
 
 if (!isset($_SESSION['idUtilisateur'], $_POST['idPlante'], $_POST['idTypeEvenement'])) {
-    header('Location: evenement-create.php');
+    header('Location: ../../index.php');
     exit;
 }
 
