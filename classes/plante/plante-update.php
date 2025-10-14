@@ -16,10 +16,10 @@ try {
         header('Location: ../../dreamplante.php');
         exit;
     } else {
-        header('Location: plante-edit.php?id=' . $_POST['idPlante'] . '&erreur=modificationPlante');
+        header('Location: plante-edit.php?erreur=modification');
         exit;
     }
 } catch (PDOException $e) {
-    header('Location: plante-edit.php?id=' . $_POST['idPlante'] . '&erreur=modificationPlante');
+    header('Location: plante-edit.php?erreur=modification');
     exit;
 }
