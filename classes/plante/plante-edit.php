@@ -12,21 +12,28 @@ $crud = new CRUD;
 $idUtilisateur = $_SESSION['idUtilisateur'];
 
 if (isset($_GET['id'])) {
+    // Stocke l'identifiant en session pour revenir dans plante-edit sans afficher l'id dans la navigation
     $_SESSION['planteEdition'] = (int)$_GET['id'];
 
     header('Location: plante-edit.php');
     exit;
 }
 
+// Si aucune plante n'est sélectionné (tentative d'accès sans avoir passé par la page principal)
 if (!isset($_SESSION['planteEdition'])) {
-    header('Location: ../../dreamplante.php');
+    header('Location: ../../index.php');
     exit;
 }
 
+// Récupère l'ID de la plante depuis la session
 $idPlante = $_SESSION['planteEdition'];
+
+// Sélectionne la plante correspondante dans la base
 $plante = $crud->selectId('plante', $idPlante, 'idPlante');
 
+// Vérifie que la plante appartient bien à l'utilisateur connecté
 if ($plante['utilisateur_idUtilisateur'] != $idUtilisateur) {
+    // Si ce n’est pas le cas, on empêche l’accès
     header('Location: ../../dreamplante.php');
     exit;
 }
@@ -48,6 +55,7 @@ $erreur = $_GET['erreur'] ?? null;
 <body class="formulaire__background">
     <div class="formulaireUtilisateur">
         <h1 class="formulaireUtilisateur__title">Modifier la plante</h1>
+
         <?php if ($erreur === 'modification'): ?>
             <p class="formulaireUtilisateur__erreur">
                 Une erreur est survenue lors de la modification.
@@ -55,6 +63,7 @@ $erreur = $_GET['erreur'] ?? null;
         <?php endif; ?>
 
         <form class="formulaireUtilisateur__form" action="plante-update.php" method="post">
+            <!-- Champ caché pour transmettre l'id de la plante -->
             <input type="hidden" name="idPlante" value="<?= ($idPlante); ?>">
 
             <label class="formulaireUtilisateur__label">
