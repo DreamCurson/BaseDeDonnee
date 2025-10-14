@@ -77,7 +77,7 @@ $erreur = $_GET['erreur'] ?? null;
 
 <?php if ($erreur === 'supprimer'): ?>
     <dialog open id="warningDialog">
-        <p>Échec lors de la suppression d'une plante</p>
+        <p>Échec lors de la suppression d'une plante ou d'un événement</p>
         <form method="dialog">
             <button>Fermer</button>
         </form>
@@ -158,10 +158,10 @@ $erreur = $_GET['erreur'] ?? null;
                                 <p><?= ($evenement['commentaire']); ?></p>
                             </div>
                             <div class="dreamplante__evenement_bouton">
-                                <a href="classes/evenements/evenements-edit.php" class="bouton__modifier_petit">
-                                    <img src="assets/img/edit.png" alt="Modifier" class="bouton__modifier-icon">
+                                <a href="classes/evenements/evenements-edit.php?id=<?= $evenement['idEvenement']; ?>" class="bouton__modifier_petit">
+                                  <img src="assets/img/edit.png" alt="Modifier" class="bouton__modifier-icon">
                                 </a>
-                                <a href="classes/evenements/evenements-delete.php" class="bouton__retirer">-</a> 
+                                <a href="classes/evenements/evenements-delete.php?id=<?= $evenement['idEvenement']; ?>" class="bouton__retirer">-</a>
                             </div>              
                         </div>
                     <?php endforeach; ?>

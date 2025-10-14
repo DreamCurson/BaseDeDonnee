@@ -4,7 +4,12 @@ require_once('../CRUD.php');
 
 $crud = new CRUD;
 
-if (!isset($_GET['id'])) {
+if (!isset($_SESSION['idUtilisateur'])) {
+    header('Location: ../../index.php');
+    exit;
+}
+
+if (!isset($_GET['id']) || empty($_GET['id'])) {
     header('Location: ../../dreamplante.php');
     exit;
 }
