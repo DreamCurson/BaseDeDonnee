@@ -188,7 +188,7 @@ $erreur = $_GET['erreur'] ?? null;
                 <?php else: ?>
                     <!-- Aucun événement trouvé -->
                     <div class="dreamplante__aucune">
-                        <p>Aucun événement pour cette plante</p>
+                        <p>Aucun événement à ce jour</p>
                     </div>
             <?php endif; ?>
 

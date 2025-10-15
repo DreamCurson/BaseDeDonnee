@@ -164,6 +164,7 @@
 /* --------------------------------------------- */
 .dreamplante__conteneur {
   display: grid;
+  min-height: 500px;
   grid-template-columns: 1fr 350px;
   grid-template-rows: auto;
   gap: 20px;
