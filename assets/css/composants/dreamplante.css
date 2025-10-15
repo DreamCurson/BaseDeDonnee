@@ -164,7 +164,7 @@
 /* --------------------------------------------- */
 .dreamplante__conteneur {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr 350px;
   grid-template-rows: auto;
   gap: 20px;
   padding: 20px;
@@ -346,12 +346,71 @@
 /* --- Notes --- */
 
 .dreamplante__notes {
+  gap: 20px;
+  flex-direction: column;
+  display: flex;
   grid-column: 2;
   grid-row: 1 / span 2;
 }
 
 .dreamplante__notes-titre {
   color: #388e3c;
+}
+
+.dreamplante__notes-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dreamplante__note {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(73, 138, 60, 0.08);
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  word-break: break-word;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  background-color: #d4f9d1a4;
+}
+
+.dreamplante__note:hover {
+  box-shadow: 0 4px 12px rgba(49, 91, 41, 0.1);
+}
+
+.dreamplante__note_texte {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dreamplante__note_texte strong {
+  font-size: 1.1rem;
+  color: #005504;
+}
+
+.dreamplante__note_texte p {
+  margin: 0;
+  line-height: 1.4;
+  color: #4a4a4a;
+}
+
+.dreamplante__note_bouton {
+  display: flex;
+  gap: 5px;
+}
+
+.dreamplante__note_bouton a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #444444;
+  transition: color 0.2s ease;
 }
 
 /* -- Responsive -- */

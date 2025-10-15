@@ -59,6 +59,12 @@ if ($idPlante) {
     $evenements = $crud->selectByDate('evenement', 'idPlante', $idPlante, 'date', 'DESC');
 }
 
+$notes = [];
+if ($idPlante) {
+    $notes = $crud->selectWhere('note', 'idPlante', $idPlante);
+}
+
+
 // Vérifie s’il y a un message d’erreur
 $erreur = $_GET['erreur'] ?? null;
 
@@ -202,12 +208,45 @@ $erreur = $_GET['erreur'] ?? null;
         <aside class="dreamplante__notes boite">
             <div class="dreamplante__entete">
                 <h2 class="dreamplante__notes-titre">Notes</h2>
-                <a href="classes/notes/notes-create.php" class="bouton__ajouter">+</a>
+                <?php if ($idPlante && $planteSelectionnee): ?>
+                    <a href="classes/notes/notes-create.php" class="bouton__ajouter">+</a>
+                <?php endif; ?>
             </div>
+
             <div class="dreamplante__notes-contenu">
-                <!-- Notes utilisateur -->
+                <?php if ($idPlante && $planteSelectionnee): ?>
+                    <?php if (!empty($notes)): ?>
+                        <?php foreach ($notes as $note): ?>
+                            <div class="dreamplante__note">
+                                <div class="dreamplante__note_contenu">
+                                    <p><strong><?= ($note['titre']); ?></strong></p>
+                                    <p><?= ($note['contenu']); ?></p>
+                                </div>
+                                <div class="dreamplante__note_bouton">
+                                    <a href="classes/notes/notes-edit.php?id=<?= $note['idNote']; ?>" class="bouton__modifier_petit">
+                                        <img src="assets/img/edit.png" alt="Modifier" class="bouton__modifier-icon">
+                                    </a>
+                                    <a href="classes/notes/notes-delete.php?id=<?= $note['idNote']; ?>" class="bouton__retirer">-</a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="dreamplante__aucune">
+                            <p>Aucune note à ce jour</p>
+                        </div>
+                    <?php endif; ?>
+                <?php elseif (empty($plantes)): ?>
+                    <div class="dreamplante__aucune">
+                        <p>Ajoutez une plante pour créer des notes</p>
+                    </div>
+                <?php else: ?>
+                    <div class="dreamplante__aucune">
+                        <p>Sélectionnez une plante pour voir ses notes</p>
+                    </div>
+                <?php endif; ?>
             </div>
         </aside>
+
     </main>
 </body>
 </html>
