@@ -4,6 +4,9 @@
 use App\Routes\Route;
 use App\Controllers\ConnexionController;
 
+Route::get('/inscription', 'ConnexionController@inscription');
+Route::post('/inscription', 'ConnexionController@store');
+
 // En débutant le site
 Route::get('/', 'ConnexionController@index');
 Route::post('/', 'ConnexionController@validate');
@@ -11,9 +14,8 @@ Route::post('/', 'ConnexionController@validate');
 Route::get('/connexion', 'ConnexionController@index');
 Route::post('/connexion', 'ConnexionController@validate');
 
-Route::get('/inscription', 'ConnexionController@inscription');
-Route::post('/inscription', 'ConnexionController@store');
-
+Route::get('/logout', 'ConnexionController@logout');
+Route::get('/modifierUtilisateur', 'ConnexionController@edit');
 
 Route::get('/dreamplante', 'BaseController@index');
 Route::get('/base/index', 'BaseController@index'); 

@@ -25,6 +25,7 @@ class Utilisateur extends CRUD{
 
         if($utilisateur && password_verify($motDePasse, $utilisateur['motDePasse'])){
             session_regenerate_id();
+            session_start();
             $_SESSION['idUtilisateur'] = $utilisateur['idUtilisateur'];
             $_SESSION['nomUtilisateur'] = $utilisateur['nomUtilisateur'];
             $_SESSION['fingerPrint'] = md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']);

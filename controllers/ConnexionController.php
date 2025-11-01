@@ -74,10 +74,15 @@ class ConnexionController{
         }
     }
 
+    public function edit(){
+        
 
-    public function delete(){
+        // return View::redirect('dreamplante');
+    }
+
+    public function logout(){
         session_destroy();
-        return View::redirect('login');
+        return View::redirect('connexion');
     }
 
 }
