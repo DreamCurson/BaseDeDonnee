@@ -1,53 +1,37 @@
-{{ include('layouts/header.php', {title: 'Client Edit'})}}
-    <div class="container">
-      <h1>Client Edit</h1>
-        <!-- <form action="{{base}}/client/update?id={{ client.id}}" method="post">  -->
-        <form method="post"> 
-            <label>Name
-                <input type="text" name="name" value="{{client.name}}">
+{{ include('layouts/header.php', {title: 'DreamPlante | Modifier un utilisateur'})}}
+<script type="module" src="{{ asset }}script/main.js"></script>
+
+<body class="formulaire__background">
+    <div class="formulaireUtilisateur">
+        <h1 class="formulaireUtilisateur__title">Modifier votre profil</h1>
+        <form class="formulaireUtilisateur__form" method="post">
+            <input type="hidden" name="idUtilisateur" value="{{ utilisateur.idUtilisateur }}">
+            <label class="formulaireUtilisateur__label">
+                Nom d'utilisateur
+                <input type="text" name="nomUtilisateur" class="formulaireUtilisateur__input" value="{{ utilisateur.nomUtilisateur }}" required>
             </label>
-            {% if errors.name is defined %}
-                <span class="error">{{errors.name}}</span>
+            {% if errors.nomUtilisateur is defined %}
+                <span class="error">{{ errors.nomUtilisateur }}</span>
             {% endif %}
-            <label>Address
-                <input type="text" name="address" value="{{client.address}}">
+            <label class="formulaireUtilisateur__label">
+                Email
+                <input type="email" name="email" class="formulaireUtilisateur__input" value="{{ utilisateur.email }}">
             </label>
-            {% if errors.address is defined %}
-                <span class="error">{{errors.address}}</span>
-            {% endif %}
-            <label>Phone
-                <input type="text" name="phone" value="{{client.phone}}">
+            <label class="formulaireUtilisateur__label">
+                Mot de passe (Si vide le mot de passe ne change pas)
+                <input type="password" name="motDePasse" class="formulaireUtilisateur__input">
             </label>
-            {% if errors.phone is defined %}
-                <span class="error">{{errors.phone}}</span>
+            {% if errors.motDePasse is defined %}
+                <span class="error">{{ errors.motDePasse }}</span>
             {% endif %}
-            <label>Zip Code
-                <input type="text" name="zip_code" value="{{client.zip_code}}">
-            </label>
-            {% if errors.zip_code is defined %}
-                <span class="error">{{errors.zip_code}}</span>
-            {% endif %}
-            <label>Email
-                <input type="email" name="email" value="{{client.email}}">
-            </label>
-            {% if errors.email is defined %}
-                <span class="error">{{errors.email}}</span>
-            {% endif %}
-            <label>City
-                <select name="city_id">
-                    <option value=""> Choose city</option>
-                    {% for city in cities %}
-                        <option value="{{ city.id}}" {% if city.id == client.city_id %} selected {% endif %}>{{ city.city}}</option>
-                    {% endfor %}
-                </select>
-            </label>
-            {% if errors.city_id is defined %}
-                <span class="error">{{errors.city_id}}</span>
-            {% endif %}
-            <!-- <label>City
-                <input type="text" name="city">
-            </label> -->
-            <input type="submit" class="btn" value="Save">
+            <button type="submit" class="formulaireUtilisateur__button">Enregistrer</button>
         </form>
-     </div>
-{{ include('layouts/footer.php')}}
+        <div class="formulaireUtilisateur__bouton">
+            <button type="button" class="formulaireUtilisateur__delete">Supprimer le compte</button>
+            <a href="supprimerUtilisateur?id={{ utilisateur.idUtilisateur }}" class="formulaireUtilisateur__confirmation">Vous êtes sûr ?</a>
+        </div>
+        <p class="formulaireInscription__texte">
+            <a href="dreamplante" class="formulaireInscription__lien">Retour à la page principale</a>
+        </p>
+    </div>
+</body>

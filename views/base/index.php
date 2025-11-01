@@ -29,7 +29,7 @@
         <!-- Zone utilisateur : nom, modifier, déconnexion -->
         <div class="dreamplante__nav-droite">
             <span class="dreamplante__utilisateur-nom">{{ nomUtilisateur }}</span>
-            <a class="dreamplante__modifier" href="connexion/modifier">Modifier</a>
+            <a class="dreamplante__modifier" href="modifierUtilisateur?id={{ idUtilisateur }}">Modifier</a>
             <a class="dreamplante__deconnexion" href="logout">Déconnexion</a>
         </div>
     </nav>

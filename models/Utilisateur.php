@@ -24,7 +24,6 @@ class Utilisateur extends CRUD{
         $utilisateur = $stmt->fetch();
 
         if($utilisateur && password_verify($motDePasse, $utilisateur['motDePasse'])){
-            session_regenerate_id();
             session_start();
             $_SESSION['idUtilisateur'] = $utilisateur['idUtilisateur'];
             $_SESSION['nomUtilisateur'] = $utilisateur['nomUtilisateur'];
