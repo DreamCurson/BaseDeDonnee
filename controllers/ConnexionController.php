@@ -49,9 +49,35 @@ class ConnexionController{
     }
 
     public function validate($data){
-        print_r($data);
-        // Array ( [nomUtilisateur] => test [motDePasse] => 123 )
+        $validator = new Validator;
+        $validator
+            ->field('nomUtilisateur', $data['nomUtilisateur'])->min(2)->max(50);
+        $validator
+            ->field('motDePasse', $data['motDePasse'])->min(3)->max(25);
 
+        if($validator->isSuccess()){
+            $utilisateur = new Utilisateur;
+            $checkuser = $utilisateur->checkUser($data['nomUtilisateur'], $data['motDePasse']);
+
+            if($checkuser){
+                // var_dump($_SESSION);
+                return View::redirect('dreamplante');
+            }else{
+                $errors['message'] = 'Informations de connexion invalide !';
+                // var_dump($errors);
+                return View::render('connexion/index', ['errors'=>$errors, 'utilisateur'=>$data]);
+            }
+        }else{
+            $errors = $validator->getErrors();
+            // var_dump($errors);
+            return View::render('connexion/index', ['errors'=>$errors, 'utilisateur'=>$data]);
+        }
+    }
+
+
+    public function delete(){
+        session_destroy();
+        return View::redirect('login');
     }
 
 }

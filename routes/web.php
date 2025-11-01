@@ -15,6 +15,10 @@ Route::get('/inscription', 'ConnexionController@inscription');
 Route::post('/inscription', 'ConnexionController@store');
 
 
+Route::get('/dreamplante', 'BaseController@index');
+Route::get('/base/index', 'BaseController@index'); 
+
+
 
 // Route::get('/clients', 'ClientController@index');
 // Route::get('/client/show', 'ClientController@show');

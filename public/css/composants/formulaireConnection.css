@@ -16,6 +16,15 @@
   font-family: Arial, sans-serif;
 }
 
+.formulaireConnection_entete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 5px;
+  font-weight: bold;
+}
+
 .formulaireConnection__form {
   display: flex;
   flex-direction: column;
@@ -24,7 +33,6 @@
 .formulaireConnection__title {
   text-align: center;
   color: #2f7a2f;
-  margin-bottom: 1.5rem;
 }
 
 .formulaireConnection__label {

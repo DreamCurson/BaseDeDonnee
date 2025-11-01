@@ -15,6 +15,25 @@ class Utilisateur extends CRUD{
 
         return password_hash($motDePasse, PASSWORD_BCRYPT, $options);
     }
+    
+    public function checkUser($nomUtilisateur, $motDePasse){
+        $sql = "SELECT * FROM $this->table WHERE nomUtilisateur = :nomUtilisateur";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(':nomUtilisateur', $nomUtilisateur);
+        $stmt->execute();
+        $utilisateur = $stmt->fetch();
+
+        if($utilisateur && password_verify($motDePasse, $utilisateur['motDePasse'])){
+            session_regenerate_id();
+            $_SESSION['idUtilisateur'] = $utilisateur['idUtilisateur'];
+            $_SESSION['nomUtilisateur'] = $utilisateur['nomUtilisateur'];
+            $_SESSION['fingerPrint'] = md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
 
 ?>

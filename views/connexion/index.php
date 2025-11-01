@@ -1,9 +1,14 @@
 {{ include('layouts/header.php', {title: 'DreamPlante | Connexion'})}}
 <body class="formulaire__background">
     <div class="formulaireConnection">
-        <h2 class="formulaireConnection__title">Connexion</h2>
+        <div class="formulaireConnection_entete">
+            <h2 class="formulaireConnection__title">Connexion</h2>
+            {% if errors.message is defined %}
+                <span class="error">{{ errors.message }}</span>
+            {% endif %}
+        </div>
         <form class="formulaireConnection__form" method="post">
-            <label for="nomUtilisateur" class="formulaireConnection__label">Nom d'utilisateur</label>
+            <label for="nomUtilisateur" class="formulaireConnection__label"  value="{{ utilisateur.nomUtilisateur }}">Nom d'utilisateur</label>
             <input 
             type="text" 
             id="nomUtilisateur" 
