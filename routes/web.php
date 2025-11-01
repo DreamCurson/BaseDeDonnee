@@ -4,13 +4,15 @@
 use App\Routes\Route;
 use App\Controllers\ConnexionController;
 
+// En débutant le site
 Route::get('/', 'ConnexionController@index');
-Route::get('/connexion', 'ConnexionController@index');
 Route::post('/', 'ConnexionController@validate');
-// Route::get('/user/create', 'UserController@create');
-// Route::post('/user/create', 'UserController@store');
+// En cliquant sur se connecter depuis inscription
+Route::get('/connexion', 'ConnexionController@index');
+Route::post('/connexion', 'ConnexionController@validate');
 
 Route::get('/inscription', 'ConnexionController@inscription');
+Route::post('/inscription', 'ConnexionController@store');
 
 
 

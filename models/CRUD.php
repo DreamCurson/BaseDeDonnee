@@ -89,4 +89,12 @@ abstract class CRUD extends \PDO {
 
     }
 
+    public function valueExists($column, $value){
+        $sql = "SELECT COUNT(*) FROM {$this->table} WHERE {$column} = ?";
+        $stmt = $this->prepare($sql);
+        $stmt->execute([$value]);
+        return $stmt->fetchColumn() > 0;
+    }
+
+
 }

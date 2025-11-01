@@ -16,37 +16,40 @@ class ConnexionController{
     }
 
     public function store($data){
-        print_r($data);
-        // Array ( [name] => [username] => [password] => [email] => [privilege_id] => 1 )
-    //     $validator = new Validator;
-    //     $validator->field('name', $data['name'])->min(2)->max(50);
-    //     $validator->field('username', $data['username'])->required()->max(50)->email();
-    //     $validator->field('password', $data['password'])->min(6)->max(20);
-    //     $validator->field('email', $data['email'])->required()->max(50)->email();
-    //     $validator->field('privilege_id', $data['privilege_id'], 'privilege')->required()->int();
+        $utilisateur = new \App\Models\Utilisateur;
+        // Array ( [nomUtilisateur] => a [email] => a@gmail.com [motDePasse] => a )
+        $validator = new Validator;
+        $validator
+        ->field('nomUtilisateur', $data['nomUtilisateur'])
+        ->required()
+        ->min(2)
+        ->max(50)
+        ->unique(function ($value) use ($utilisateur) {
+            return $utilisateur->valueExists('nomUtilisateur', $value);
+        });
 
-    //     if($validator->isSuccess()){
-    //         $user = new User;
-    //         $data['password'] = $user->hashPassword($data['password']);
-    //         // print_r($data);
-    //         // die();
-    //        $insert = $user->insert($data);
-    //        if($insert){
-    //             return view::redirect('login');
-    //        }else{
-    //             return view::render('error');
-    //        }
+        $validator->field('motDePasse', $data['motDePasse'])->required()->min(3)->max(25);
+        $validator->field('email', $data['email'])->max(50)->email();
 
-    //     }else{
-    //         $errors = $validator->getErrors();
-    //         $privilege = new Privilege;
-    //         $privileges = $privilege->select('privilege');
-    //         return view::render('user/create', ['errors'=>$errors, 'privileges' => $privileges, 'user' =>$data]);
-    //     }
+        if($validator->isSuccess()){
+            $utilisateur = new Utilisateur;
+            $data['motDePasse'] = $utilisateur->hashPassword($data['motDePasse']);
+           $insert = $utilisateur->insert($data);
+           if($insert){
+                return view::redirect('connexion');
+           }else{
+                return view::render('error');
+           }
+
+        }else{
+            $errors = $validator->getErrors();
+            // var_dump($errors);
+            return view::render('connexion/create', ['errors'=>$errors, 'utilisateur' =>$data]);
+        }
     }
 
     public function validate($data){
-        // print_r($data);
+        print_r($data);
         // Array ( [nomUtilisateur] => test [motDePasse] => 123 )
 
     }
