@@ -30,6 +30,15 @@ abstract class CRUD extends \PDO {
         }    
     }
 
+    final public function selectBy($column, $value) {
+        $sql = "SELECT * FROM $this->table WHERE $column = :value";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(":value", $value);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+
     final public function insert($data){
 
         $data_keys = array_fill_keys($this->fillable, '');

@@ -20,17 +20,14 @@ Route::get('/supprimerUtilisateur', 'ConnexionController@delete');
 Route::get('/logout', 'ConnexionController@logout');
 
 Route::get('/dreamplante', 'BaseController@index');
-Route::get('/base/index', 'BaseController@index'); 
+Route::get('/base/index', 'BaseController@index');
 
-
-
-// Route::get('/clients', 'ClientController@index');
-// Route::get('/client/show', 'ClientController@show');
-// Route::get('/client/create', 'ClientController@create');
-// Route::post('/client/create', 'ClientController@store');
-// Route::get('/client/edit', 'ClientController@edit');
-// Route::post('/client/edit', 'ClientController@update');
-// Route::post('/client/delete', 'ClientController@delete');
+Route::post('/dreamplante', 'PlanteController@select'); 
+Route::get('/planteAjoute', 'PlanteController@add');
+Route::post('/planteAjoute', 'PlanteController@store');
+Route::get('/planteModifie', 'PlanteController@edit');
+Route::post('/planteModifie', 'PlanteController@update');
+Route::get('/planteDelete', 'PlanteController@delete');
 
 
 

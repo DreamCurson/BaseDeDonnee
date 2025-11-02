@@ -1,35 +1,17 @@
-<?php
-session_start();
+{{ include('layouts/header.php', {title: 'DreamPlante | Ajouter une plante'})}}
 
-if (!isset($_SESSION['idUtilisateur'])) {
-    header('Location: ../../index.php');
-    exit;
-}
-
-$erreur = $_GET['erreur'] ?? null;
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DreamPlante | Ajout plante</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
-</head>
 <body class="formulaire__background ">
     <div class="formulairePlante">
         <h2 class="formulairePlante__titre">Ajouter votre plante</h2>
 
-        <?php if ($erreur === 'erreurDonnee'): ?>
-            <p class="formulairePlante__erreur">Erreur dans l'entrée de données</p>
-        <?php endif; ?>
-
-        <form class="formulairePlante__form" action="plante-store.php" method="post">
+        <form class="formulairePlante__form" method="post">
             <label class="formulairePlante__label">
                 Nom de votre plante
                 <input type="text" name="nom" class="formulairePlante__input" required>
             </label>
+            {% if errors.nom is defined %}
+                <span class="error">{{ errors.nom }}</span>
+            {% endif %}
 
             <label class="formulairePlante__label">
                 Type de plante
@@ -40,13 +22,17 @@ $erreur = $_GET['erreur'] ?? null;
                 Date d'aquisition de votre plante
                 <input type="date" name="dateAcquisition" class="formulairePlante__input" required>
             </label>
+            {% if errors.dateAcquisition is defined %}
+                <span class="error">{{ errors.dateAcquisition }}</span>
+            {% endif %}
 
             <input type="submit" value="Ajouter la plante" class="formulairePlante__bouton">
         </form>
 
         <p class="formulairePlante__texte">
-            Annuler la création <a href="../../dreamplante.php" class="formulairePlante__lien">Annuler</a>
+            Annuler la création <a href="dreamplante" class="formulairePlante__lien">Annuler</a>
         </p>
     </div>
 </body>
-</html>
+
+{{ include('layouts/footer.php')}}

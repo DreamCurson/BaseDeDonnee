@@ -136,6 +136,7 @@ class ConnexionController{
     }
 
     public function logout(){
+        session_start();
         session_destroy();
         return View::redirect('connexion');
     }

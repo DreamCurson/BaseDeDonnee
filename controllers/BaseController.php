@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
-use App\Models\Utilisateur;
 use App\Providers\View;
+use App\Models\Plante;
 
 class BaseController {
     public function __construct() {
@@ -17,9 +17,13 @@ class BaseController {
         $nomUtilisateur = $_SESSION['nomUtilisateur'];
         $idUtilisateur = $_SESSION['idUtilisateur'];
 
+        $plantes = new Plante;
+        $plantesUtilisateur = $plantes->selectBy('utilisateur_idUtilisateur', $idUtilisateur);
+
         return View::render('base/index', [
             'nomUtilisateur' => $nomUtilisateur,
-            'idUtilisateur' => $idUtilisateur
+            'idUtilisateur' => $idUtilisateur,
+            'plantesUtilisateur' => $plantesUtilisateur
         ]);
     }
 }

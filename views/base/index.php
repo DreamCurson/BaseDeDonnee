@@ -9,21 +9,24 @@
 <body class="dreamplante">
     <nav class="dreamplante__nav">
         <div class="dreamplante__nav-gauche">
-            <?php if (empty($plantes)): ?>
-                <!-- Aucune plante trouvé -->
+            {% if plantesUtilisateur is empty %}
+                <!-- Aucune plante trouvée -->
                 <div class="dreamplante__nav_aucune">
                 </div>
-            <?php else: ?>
+            {% else %}
                 <!-- Liste des plantes appartenant à l’utilisateur -->
-                <?php foreach ($plantes as $plante): ?>
+                {% for plante in plantesUtilisateur %}
                     <form action="" method="post" style="display:inline;">
-                        <input type="hidden" name="idPlante" value="">
-                        <button type="submit" class="dreamplante__plante-nom">Nom Plante</button>
+                        <input type="hidden" name="idPlante" value="{{ plante.idPlante }}">
+                        <button type="submit" class="dreamplante__plante-nom">
+                            {{ plante.nom }}
+                        </button>
                     </form>
-                <?php endforeach; ?>
-            <?php endif; ?>
+                {% endfor %}
+            {% endif %}
+
             <!-- Bouton pour ajouter une nouvelle plante -->
-            <a href="" class="bouton__ajouter">+</a>
+            <a href="planteAjoute" class="bouton__ajouter">+</a>
         </div>
 
         <!-- Zone utilisateur : nom, modifier, déconnexion -->
@@ -36,33 +39,35 @@
         
     <main class="dreamplante__conteneur">
         <section class="dreamplante__plante boite">
-            <?php if ($idPlante && $planteSelectionnee): ?>
+
+            {% if idPlante and planteSelectionnee %}
                 <!-- Détails de la plante sélectionnée -->
                 <div class="dreamplante__entete">
-                    <h2 class="dreamplante__plante-titre"></h2>
-                    <a href="" class="bouton__modifier">
+                    <h2 class="dreamplante__plante-titre">{{ planteSelectionnee.nom }}</h2>
+                    <a href="planteModifie?id={{ idPlante }}" class="bouton__modifier">
                         <img src="{{ img }}edit.png" alt="Modifier" class="bouton__modifier-icon">
                     </a>
                 </div>
                 <div class="dreamplante__plante-contenu">
-                    <p>Type : </p>
-                    <p>Acquise le : </p>
-                    <p>Âge : </p>
+                <p>Type : {{ planteSelectionnee.typePlante|default('Pas défini') }}</p>
+                    <p>Acquise le : {{ planteSelectionnee.dateAcquisition }}</p>
+                    <p>Âge : {{ planteSelectionnee.ageTexte }}</p>
                 </div>
 
-            <?php elseif (empty($plantes)): ?>
+            {% elseif plantesUtilisateur is empty %}
                 <!-- Aucune plante encore ajoutée -->
                 <div class="dreamplante__aucune">
                     <p>Ajouter une plante pour commencer</p>
-                    <a href="classes/plante/plante-create.php" class="bouton__ajouter">+</a>
+                    <a href="planteAjoute" class="bouton__ajouter">+</a>
                 </div>
-            <?php else: ?>
+
+            {% else %}
                 <!-- Aucune plante sélectionnée -->
                 <div class="dreamplante__aucune">
                     <p>Sélectionnez une plante dans la navigation</p>
                 </div>
-            <?php endif; ?>
+            {% endif %}
         </section>
     </main>
-
 </body>
+</html>
