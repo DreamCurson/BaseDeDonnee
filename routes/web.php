@@ -21,14 +21,18 @@ Route::get('/logout', 'ConnexionController@logout');
 
 Route::get('/dreamplante', 'BaseController@index');
 Route::get('/base/index', 'BaseController@index');
+Route::post('/dreamplante', 'BaseController@select'); 
 
-Route::post('/dreamplante', 'PlanteController@select'); 
 Route::get('/planteAjoute', 'PlanteController@add');
 Route::post('/planteAjoute', 'PlanteController@store');
 Route::get('/planteModifie', 'PlanteController@edit');
 Route::post('/planteModifie', 'PlanteController@update');
 Route::get('/planteDelete', 'PlanteController@delete');
 
-
+Route::get('/evenementAjoute', 'EvenementController@add');
+Route::post('/evenementAjoute', 'EvenementController@store');
+Route::get('/evenementModifie', 'EvenementController@edit');
+Route::post('/evenementModifie', 'EvenementController@update');
+Route::get('/evenementDelete', 'EvenementController@delete');
 
 Route::dispatch();

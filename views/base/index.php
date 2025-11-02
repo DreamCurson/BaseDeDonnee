@@ -68,6 +68,89 @@
                 </div>
             {% endif %}
         </section>
+
+        <section class="dreamplante__evenements boite">
+            {% if idPlante and planteSelectionnee %}
+                <div class="dreamplante__entete">
+                    <h2 class="dreamplante__evenements-titre">Événements</h2>
+                    <a href="evenementAjoute?idPlante={{ planteSelectionnee.idPlante }}" class="bouton__ajouter">+</a>
+                </div>
+
+                {% if evenements is not empty %}
+                    <div class="dreamplante__evenements-contenu">
+                        {% for evenement in evenements %}
+                            <div class="dreamplante__evenement {{ evenement.typeClass }}">
+                                <div class="dreamplante__evenement_contenu">
+                                    <p><strong>{{ evenement.typeNom }}</strong></p>
+                                    <p>{{ evenement.date }}</p>
+                                    <p>{{ evenement.commentaire }}</p>
+                                </div>
+                                <div class="dreamplante__evenement_bouton">
+                                    <a href="evenementModifie?id={{ evenement.idEvenement }}" class="bouton__modifier_petit">
+                                        <img src="{{ img }}edit.png" alt="Modifier" class="bouton__modifier-icon">
+                                    </a>
+                                    <a href="" class="bouton__retirer">-</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="dreamplante__aucune">
+                        <p>Aucun événement à ce jour</p>
+                    </div>
+                {% endif %}
+
+            {% elseif plantesUtilisateur is empty %}
+                <div class="dreamplante__aucune">
+                    <p>Ajouter une plante pour créer des événements</p>
+                </div>
+            {% else %}
+                <div class="dreamplante__aucune">
+                    <p>Sélectionnez une plante pour voir ses événements</p>
+                </div>
+            {% endif %}
+        </section>
+
+
+        <aside class="dreamplante__notes boite">
+            <div class="dreamplante__entete">
+                <h2 class="dreamplante__notes-titre">Notes</h2>
+            </div>
+
+            <div class="dreamplante__notes-contenu">
+                {% if idPlante and planteSelectionnee %}
+                    {% if notes is not empty %}
+                        {% for note in notes %}
+                            <div class="dreamplante__note">
+                                <div class="dreamplante__note_contenu">
+                                    <p><strong>{{ note.titre }}</strong></p>
+                                    <p>{{ note.contenu }}</p>
+                                </div>
+                                <div class="dreamplante__note_bouton">
+                                    <a href="" class="bouton__modifier_petit">
+                                        <img src="{{ img }}edit.png" alt="Modifier" class="bouton__modifier-icon">
+                                    </a>
+                                    <a href="" class="bouton__retirer">-</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="dreamplante__aucune">
+                            <p>Fonction désactivé pour l'instant</p>
+                        </div>
+                    {% endif %}
+                {% elseif plantesUtilisateur is empty %}
+                    <div class="dreamplante__aucune">
+                        <p>Fonction désactivé pour l'instant</p>
+                    </div>
+                {% else %}
+                    <div class="dreamplante__aucune">
+                        <p>Fonction désactivé pour l'instant</p>
+                    </div>
+                {% endif %}
+            </div>
+        </aside>
+
     </main>
 </body>
 </html>

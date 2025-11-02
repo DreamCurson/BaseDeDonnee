@@ -3,60 +3,10 @@ namespace App\Controllers;
 
 use App\Providers\View;
 use App\Models\Plante;
+
 use App\Providers\Validator;
 
 class PlanteController {
-    public function select(){
-        session_start();
-        $idUtilisateur = $_SESSION['idUtilisateur'];
-
-        $plantes = new Plante;
-        $plantesUtilisateur = $plantes->selectBy('utilisateur_idUtilisateur', $idUtilisateur);
-
-        $planteSelectionnee = null;
-        $idPlante = $_POST['idPlante'] ?? null;
-
-        if ($idPlante) {
-            $planteSelectionnee = $plantes->selectId($idPlante);
-
-            // Calculer l'âge de la plante
-            if (!empty($planteSelectionnee['dateAcquisition'])) {
-                $dateAcquisition = new \DateTime($planteSelectionnee['dateAcquisition']);
-                $aujourdhui = new \DateTime();
-                $interval = $dateAcquisition->diff($aujourdhui);
-                $ageParts = [];
-
-                // Si la plante a au moins 1 an
-                if ($interval->y > 0) {
-                    $ageParts[] = $interval->y . ' an' . ($interval->y > 1 ? 's' : '');
-                }
-
-                // Si la plante a au moins 1 mois
-                if ($interval->m > 0) {
-                    $ageParts[] = $interval->m . ' mois';
-                }
-
-                // Si la plante a moins d’un an mais au moins 1 jour
-                if ($interval->d > 0 && $interval->y === 0) {
-                    $ageParts[] = $interval->d . ' jour' . ($interval->d > 1 ? 's' : '');
-                }
-
-                $planteSelectionnee['ageTexte'] = !empty($ageParts) ? implode(' ', $ageParts) : "moins d’un jour";
-            } else {
-                $planteSelectionnee['ageTexte'] = "Date inconnue";
-            }
-        }
-
-        return View::render('base/index', [
-            'nomUtilisateur' => $_SESSION['nomUtilisateur'],
-            'idUtilisateur' => $idUtilisateur,
-            'plantesUtilisateur' => $plantesUtilisateur,
-            'idPlante' => $idPlante,
-            'planteSelectionnee' => $planteSelectionnee
-        ]);
-    }
-
-
     public function add(){
         return View::render("plante/create");
     }
@@ -92,10 +42,10 @@ class PlanteController {
             if($selectId){
                 return View::render("plante/edit", ['plante' => $selectId]);
             }else{
-                return View::render('connexion');
+                return View::render('connexion/index');
             }
         }else{
-             return View::render('connexion');
+             return View::render('connexion/index');
         }
     }
 
