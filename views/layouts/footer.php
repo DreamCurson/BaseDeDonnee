@@ -1,6 +1,5 @@
     </main>
-    <footer>
-         <p>© 2025 All rights reserved | 2025</p>
+    <footer class="footer">
     </footer>
 </body>
 </html>

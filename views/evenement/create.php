@@ -52,4 +52,3 @@
         </p>
     </div>
 </body>
-{{ include('layouts/footer.php') }}

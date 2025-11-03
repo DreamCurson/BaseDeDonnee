@@ -153,4 +153,6 @@
 
     </main>
 </body>
+{{ include('layouts/footer.php') }}
+
 </html>
