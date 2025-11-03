@@ -35,4 +35,10 @@ Route::get('/evenementModifie', 'EvenementController@edit');
 Route::post('/evenementModifie', 'EvenementController@update');
 Route::get('/evenementDelete', 'EvenementController@delete');
 
+Route::get('/noteAjoute', 'NoteController@add');
+Route::post('/noteAjoute', 'NoteController@store');
+Route::get('/noteEdit', 'NoteController@edit');
+Route::post('/noteEdit', 'NoteController@update');
+Route::get('/noteDelete', 'NoteController@delete');
+
 Route::dispatch();

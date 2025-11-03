@@ -10,7 +10,7 @@ use App\Providers\Validator;
 class EvenementController {
     public function add($id) {
         if (is_array($id)) {
-            $id = $id['idPlante'] ?? null; // extract the actual value
+            $id = $id['idPlante'] ?? null;
         }
 
         $typeModel = new TypeEvenement();
@@ -32,8 +32,6 @@ class EvenementController {
         $validator = new Validator;
         $validator->field('commentaire', $data['commentaire'])->required()->min(3)->max(200);
         $validator->field('idTypeEvenement', $data['idTypeEvenement'], 'typeEvenement')->required()->int();
-        session_start();
-        $planteSelectionnee = $_SESSION['planteSelectionnee'] ?? null;
 
         if($validator->isSuccess()){
             $evenement = new Evenement;
