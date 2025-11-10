@@ -1,0 +1,429 @@
+.dreamplante {
+  position: relative;
+  background-image: url("../../img/backgroud_connexion.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dreamplante::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.279);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dreamplante__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #a5d6a7;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dreamplante__nav-gauche {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dreamplante__plante-nom {
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #144717;
+  transition: ease-in-out 300ms;
+  cursor: pointer;
+}
+
+.dreamplante__plante-nom:hover {
+  text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #04810d;
+}
+
+.dreamplante__ajouter {
+  font-size: 18px;
+  font-family: "bubble", sans-serif;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #388e3c;
+}
+
+.dreamplante__ajouter:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #388e3c;
+}
+
+.dreamplante__ajouter:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #388e3c;
+}
+
+.dreamplante__nav-droite {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  position: relative;
+}
+
+.dreamplante__utilisateur {
+  position: relative;
+  font-weight: bold;
+  color: #1b5e20;
+  cursor: pointer;
+}
+
+.dreamplante__user-actions {
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(-5px);
+}
+
+.dreamplante__utilisateur:hover .dreamplante__user-actions {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dreamplante__deconnexion {
+  text-decoration: none;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  background-color: #f44336;
+  color: #fff;
+  box-shadow: 0 3px #d32f2f;
+}
+
+.dreamplante__deconnexion:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #d32f2f;
+}
+
+.dreamplante__deconnexion:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #d32f2f;
+}
+
+.boite {
+  border: 6px solid #e8f5e9;
+}
+
+.dreamplante__entete {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dreamplante__modifier {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  background-color: #66bb6a;
+  color: #fff;
+  box-shadow: 0 3px #4caf50;
+  text-decoration: none;
+}
+
+.dreamplante__modifier:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #4caf50;
+}
+
+.dreamplante__modifier:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #4caf50;
+}
+
+/* --------------------------------------------- */
+.dreamplante__conteneur {
+  display: grid;
+  min-height: 500px;
+  grid-template-columns: 1fr 350px;
+  grid-template-rows: auto;
+  gap: 20px;
+  padding: 20px;
+}
+
+.dreamplante__plante,
+.dreamplante__evenements,
+.dreamplante__notes {
+  background-color: #eaf0e9ec;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section plante */
+
+.dreamplante__plante {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.dreamplante__plante-titre {
+  font-family: "gras", sans-serif;
+  font-size: 26px;
+  color: #2e7d32;
+  margin: 0;
+  cursor: default;
+}
+
+.dreamplante__aucune {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: space-between;
+  color: #388e3c;
+  font-family: "gras", sans-serif;
+  font-size: 20px;
+}
+
+.dreamplante__ajouter {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 24px;
+  font-family: "bubble", sans-serif;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #2e7d32;
+}
+
+.dreamplante__ajouter:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #2e7d32;
+}
+
+.dreamplante__ajouter:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #2e7d32;
+}
+
+.dreamplante__entete {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dreamplante__plante-contenu {
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  gap: 10px;
+  text-align: left;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Section evenements */
+
+.dreamplante__evenements-titre {
+  color: #388e3c;
+}
+
+.dreamplante__evenements {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dreamplante__evenement {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  word-break: break-word;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+.dreamplante__evenements-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dreamplante__evenement_bouton {
+  display: flex;
+  gap: 5px;
+}
+
+.dreamplante__evenement:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.12);
+}
+
+.dreamplante__evenement strong {
+  font-size: 1.1rem;
+}
+
+.ajoutengrais {
+  background-color: #f5ecff;
+  border: 1px solid #d1b3ff;
+  color: #2e294e;
+  border-left: 6px solid #a66cff;
+}
+
+.arrosage {
+  background-color: #e9f5ff;
+  border: 1px solid #a3c8ff;
+  color: #1e3a5f;
+  border-left: 6px solid #5a9bff;
+}
+
+.coupedebranche {
+  background-color: #f1fff0;
+  border: 1px solid #b2e5b2;
+  color: #244025;
+  border-left: 6px solid #70d570;
+}
+
+.feuillemorte {
+  background-color: #fff5e6;
+  border: 1px solid #ffd5a3;
+  color: #4d3319;
+  border-left: 6px solid #ff9d2e;
+}
+
+.bourgeons {
+  background-color: #f4f9ef;
+  border: 1px solid #cde9b3;
+  color: #2f3e1e;
+  border-left: 6px solid #94d82d;
+}
+
+.maladie {
+  background-color: #ffeaea;
+  border: 1px solid #ffb3b3;
+  color: #591515;
+  border-left: 6px solid #ff4d4d;
+}
+
+.autre {
+  background-color: #f6f6f6;
+  border: 1px solid #d1d1d1;
+  color: #3c3c3c;
+  border-left: 6px solid #999;
+}
+
+/* --- Notes --- */
+
+.dreamplante__notes {
+  gap: 20px;
+  flex-direction: column;
+  display: flex;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.dreamplante__notes-titre {
+  color: #388e3c;
+}
+
+.dreamplante__notes-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dreamplante__note {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(73, 138, 60, 0.08);
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  word-break: break-word;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  background-color: #d4f9d1a4;
+}
+
+.dreamplante__note:hover {
+  box-shadow: 0 4px 12px rgba(49, 91, 41, 0.1);
+}
+
+.dreamplante__note_texte {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dreamplante__note_texte strong {
+  font-size: 1.1rem;
+  color: #005504;
+}
+
+.dreamplante__note_texte p {
+  margin: 0;
+  line-height: 1.4;
+  color: #4a4a4a;
+}
+
+.dreamplante__note_bouton {
+  display: flex;
+  gap: 5px;
+}
+
+.dreamplante__note_bouton a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+/* -- Responsive -- */
+
+@media (max-width: 900px) {
+  .dreamplante__conteneur {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .dreamplante__notes {
+    grid-column: 1;
+    grid-row: 3;
+  }
+}
