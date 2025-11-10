@@ -33,6 +33,10 @@
             Pas encore inscrit ? 
             <a href="inscription" class="formulaireConnection__link">S'inscrire</a>
         </p>
+        <p class="formulaireConnection__signup">
+            Vous êtes un administrateur ?
+            <a href="admin-connexion" class="formulaireConnection__link">Se connecter</a>
+        </p>
     </div>
 </body>
 {{ include('layouts/footer.php')}}

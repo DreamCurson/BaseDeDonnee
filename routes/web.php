@@ -41,4 +41,6 @@ Route::get('/noteEdit', 'NoteController@edit');
 Route::post('/noteEdit', 'NoteController@update');
 Route::get('/noteDelete', 'NoteController@delete');
 
+Route::get('/admin-connexion', 'AdminController@connexion');
+
 Route::dispatch();
