@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Providers\View;
 use App\Models\Admin;
 use App\Providers\Validator;
+use App\Models\Plante;
 
 class AdminController {
     public function connexion(){
@@ -40,7 +41,12 @@ class AdminController {
             View::redirect('connexion');
             exit;
         }
+
+        $plante = new Plante;
+        $select = $plante->select();
         
-        View::render('admin/index');
+        
+
+        return View::render('admin/index', ['plantes' => $select]);
     }
 }
