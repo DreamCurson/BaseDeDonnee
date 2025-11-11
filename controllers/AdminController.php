@@ -21,16 +21,19 @@ class AdminController {
 
             if($checkuser){
                 var_dump($_SESSION);
-                // return View::redirect('dreamplante');
+                return View::redirect('admin');
             }else{
                 $errors['message'] = 'Informations de connexion invalide !';
-                var_dump($errors);
-                // return View::render('connexion/index', ['errors'=>$errors, 'utilisateur'=>$data]);
+                return View::render('connexion/index-admin', ['errors'=>$errors, 'admin'=>$data]);
             }
         }else{
-            $errors = $validator->getErrors();
-            var_dump($errors);
-            // return View::render('connexion/index', ['errors'=>$errors, 'utilisateur'=>$data]);
+            $errors['message'] = 'Informations de connexion invalide !';
+            // var_dump($errors);
+            return View::render('connexion/index-admin', ['errors'=>$errors, 'admin'=>$data]);
         }
+    }
+
+    public function index(){
+        echo "allo";
     }
 }

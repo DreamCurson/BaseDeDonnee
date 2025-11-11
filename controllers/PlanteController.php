@@ -21,7 +21,6 @@ class PlanteController {
     }
 
     public function store($data){
-        // Utilisateur connecté
         $plante = new Plante;
 
         $validator = new Validator;
@@ -60,7 +59,6 @@ class PlanteController {
     }
 
     public function update($data = [], $get = []) {
-        // Utilisateur connecté
         if(isset($get['id']) && $get['id'] != null){
             $validator = new Validator;
             
@@ -84,7 +82,6 @@ class PlanteController {
     }
 
     public function delete($data){
-        // Utilisateur connecté
         $plante = new Plante;
         $delete = $plante->delete($data['id']);
         if($delete){
