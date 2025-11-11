@@ -1,4 +1,5 @@
 {{ include('layouts/header.php', {title: 'DreamPlante | Connexion'})}}
+
 <body class="formulaire__background">
     <div class="formulaireConnection">
         <div class="formulaireConnection_entete">
@@ -8,8 +9,9 @@
             {% endif %}
         </div>
         <form class="formulaireConnection__form" method="post">
-            <label for="nomUtilisateur" class="formulaireConnection__label"  value="{{ utilisateur.nomUtilisateur }}">Nom d'utilisateur</label>
+            <label for="nomUtilisateur" class="formulaireConnection__label" value="{{ admin.nomUtilisateur }}">Nom d'utilisateur</label>
             <input 
+            value="{{ admin.nomUtilisateur }}"
             type="text" 
             id="nomUtilisateur" 
             name="nomUtilisateur" 

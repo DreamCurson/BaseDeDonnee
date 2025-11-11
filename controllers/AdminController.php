@@ -34,6 +34,13 @@ class AdminController {
     }
 
     public function index(){
-        echo "allo";
+        session_start();
+
+        if(!isset($_SESSION['nomUtilisateurAdmin'])){
+            View::redirect('connexion');
+            exit;
+        }
+        
+        View::render('admin/index');
     }
 }
