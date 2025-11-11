@@ -8,6 +8,15 @@ use App\Models\TypeEvenement;
 use App\Providers\Validator;
 
 class EvenementController {
+    public function __construct() {
+        session_start();
+
+        if(!isset($_SESSION['nomUtilisateur'])){
+            View::redirect('connexion');
+            exit;
+        }
+    }
+
     public function add($id) {
         if (is_array($id)) {
             $id = $id['idPlante'] ?? null;

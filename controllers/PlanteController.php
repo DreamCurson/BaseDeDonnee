@@ -7,8 +7,16 @@ use App\Models\Plante;
 use App\Providers\Validator;
 
 class PlanteController {
+    public function __construct() {
+        session_start();
+
+        if(!isset($_SESSION['nomUtilisateur'])){
+            View::redirect('connexion');
+            exit;
+        }
+    }
+    
     public function add(){
-        // Utilisateur connecté
         return View::render("plante/create");
     }
 
@@ -38,7 +46,6 @@ class PlanteController {
     }
 
     public function edit($data = []){
-        // Utilisateur connecté
         if(isset($data['id']) && $data['id']!=null){
             $plante = new Plante;
             $selectId = $plante->selectId($data['id']);

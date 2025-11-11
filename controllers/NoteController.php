@@ -8,6 +8,15 @@ use App\Models\Note;
 use App\Providers\Validator;
 
 class NoteController {
+    public function __construct() {
+        session_start();
+
+        if(!isset($_SESSION['nomUtilisateur'])){
+            View::redirect('connexion');
+            exit;
+        }
+    }
+
     public function add($id) {
         return View::render('note/create', [
             'idPlante' => $id['idPlante']

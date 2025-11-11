@@ -20,26 +20,20 @@ class BaseController {
         $nomUtilisateur = $_SESSION['nomUtilisateur'];
         $idUtilisateur = $_SESSION['idUtilisateur'];
 
-        // Fetch all plants for the user
         $plantes = new Plante;
         $plantesUtilisateur = $plantes->selectBy('utilisateur_idUtilisateur', $idUtilisateur);
 
-        // Check if there's a selected plant (from session or from request)
         $planteSelectionnee = $_SESSION['planteSelectionnee'] ?? null;
 
-        // Initialize empty arrays for events and notes
         $evenements = [];
         $notes = [];
 
-        // If a plant is selected (from session or passed via POST), load its details
         if ($planteSelectionnee) {
             $idPlante = $planteSelectionnee['idPlante'];
 
-            // Get events for the selected plant
             $evenementModel = new Evenement();
             $evenements = $evenementModel->selectBy('idPlante', $idPlante);
 
-            // Get event types and add them to the events
             $typeModel = new TypeEvenement();
             foreach ($evenements as &$evenement) {
                 $type = $typeModel->selectId($evenement['idTypeEvenement']);
@@ -47,11 +41,9 @@ class BaseController {
                 $evenement['typeClass'] = strtolower(str_replace(' ', '', $evenement['typeNom']));
             }
 
-            // Get notes for the selected plant
             $noteModel = new Note();
             $notes = $noteModel->selectBy('idPlante', $idPlante);
 
-            // Calculate plant age (like in the select method)
             if (!empty($planteSelectionnee['dateAcquisition'])) {
                 $dateAcquisition = new \DateTime($planteSelectionnee['dateAcquisition']);
                 $aujourdhui = new \DateTime();
