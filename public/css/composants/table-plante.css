@@ -1,0 +1,93 @@
+.table-plante-boite {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.page-title {
+  text-align: center;
+  color: #2f5d50;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.table-plante {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #f9fbf9;
+  border: 1px solid #cfe3d3;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  color: #2f3e35;
+}
+
+.table-plante__body {
+  text-align: center;
+}
+
+.table-plante__head {
+  background: linear-gradient(to bottom, #cde8d4, #b6dcbf);
+}
+
+.table-plante__row--header {
+  color: #2e493d;
+  cursor: default;
+}
+
+.table-plante__cell {
+  padding: 14px 18px;
+  border-bottom: 2px solid #dfeee3;
+}
+
+.table-plante__cell--head {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.table-plante__body .table-plante__row:nth-child(even) {
+  background-color: #eef7f0;
+}
+
+.table-plante__body .table-plante__row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.table-plante__link {
+  color: #2f6b52;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.table-plante__link:hover {
+  color: #1f523c;
+  text-decoration: underline;
+}
+
+.table-plante__cell {
+  border-right: 2px solid #dfeee3;
+  border-left: none;
+}
+
+.table-plante__cell--head {
+  border: none;
+}
+
+.table-plante__row:last-child .table-plante__cell {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .table-plante {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .table-plante__cell {
+    padding: 10px 12px;
+  }
+}

@@ -10,6 +10,8 @@
 
 @import url("composants/warning.css");
 
+@import url("composants/table-plante.css");
+
 @font-face {
   font-family: "bubble";
   src: url("../fonts/Super\ Joyful.ttf") format("truetype");
