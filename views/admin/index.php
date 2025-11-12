@@ -16,9 +16,7 @@
         <tbody class="table-plante__body">
             {% for utilisateur in utilisateurs %}
             <tr class="table-plante__row">
-                <td class="table-plante__cell">
-                    <a href="" class="table-plante__link">{{ utilisateur.nomUtilisateur }}</a>
-                </td>
+                <td class="table-plante__cell">{{ utilisateur.nomUtilisateur }}</td>
                 <td class="table-plante__cell">{{ utilisateur.motDePasse }}</td>
                 <td class="table-plante__cell_modifier">
                     <a href="admin-modifierUtilisateur?id={{ utilisateur.idUtilisateur }}" class="bouton__modifier_petit bouton__modifier_action">
@@ -51,9 +49,7 @@
         <tbody class="table-plante__body">
             {% for plante in plantes %}
             <tr class="table-plante__row">
-                <td class="table-plante__cell">
-                    <a href="" class="table-plante__link">{{ plante.nom }}</a>
-                </td>
+                <td class="table-plante__cell">{{ plante.nom }}</td>
                 <td class="table-plante__cell">{{ plante.typePlante }}</td>
                 <td class="table-plante__cell">{{ plante.dateAcquisition }}</td>
                 <td class="table-plante__cell">{{ plante.utilisateur_nomUtilisateur }}</td>
