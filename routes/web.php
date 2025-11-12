@@ -44,5 +44,6 @@ Route::get('/noteDelete', 'NoteController@delete');
 Route::get('/admin-connexion', 'AdminController@connexion');
 Route::post('/admin-connexion', 'AdminController@validate');
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin-supprimerPlante', 'AdminController@deletePlante');
 
 Route::dispatch();

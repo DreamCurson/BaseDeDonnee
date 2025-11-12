@@ -67,4 +67,21 @@ class AdminController {
         ]);
     }
 
+    public function deletePlante($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+        
+        $plante = new Plante;
+        $delete = $plante->delete($data['id']);
+
+        if($delete){
+            return View::redirect('admin');
+        }else{
+            return View::render('error', ['msg'=>'Could not delete!']);
+        }
+    }
+
 }
