@@ -5,6 +5,7 @@ use App\Providers\View;
 use App\Models\Admin;
 use App\Providers\Validator;
 use App\Models\Plante;
+use App\Models\Utilisateur;
 
 class AdminController {
     public function connexion(){
@@ -34,19 +35,36 @@ class AdminController {
         }
     }
 
-    public function index(){
+    public function index() {
         session_start();
 
-        if(!isset($_SESSION['nomUtilisateurAdmin'])){
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
             View::redirect('connexion');
             exit;
         }
 
-        $plante = new Plante;
-        $select = $plante->select();
-        
-        
+        $planteModel = new Plante();
+        $utilisateurModel = new Utilisateur();
 
-        return View::render('admin/index', ['plantes' => $select]);
+        $plantes = $planteModel->select();
+        $utilisateurs = $utilisateurModel->select();
+
+        foreach ($plantes as &$plante) {
+            $idUtilisateur = $plante['utilisateur_idUtilisateur'];
+
+            $utilisateur = $utilisateurModel->selectId($idUtilisateur);
+
+            if ($utilisateur) {
+                $plante['utilisateur_nomUtilisateur'] = $utilisateur['nomUtilisateur'];
+            } else {
+                $plante['utilisateur_nomUtilisateur'] = 'Utilisateur inconnu';
+            }
+        }
+
+        return View::render('admin/index', [
+            'plantes' => $plantes,
+            'utilisateurs' => $utilisateurs
+        ]);
     }
+
 }

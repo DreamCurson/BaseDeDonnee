@@ -58,7 +58,38 @@
   box-shadow: 0 1px #d32f2f;
 }
 
+.bouton__retirer_action {
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "bubble", sans-serif;
+  padding: 6px;
+  min-width: 66px;
+  border-radius: 6px;
+  border: none;
+  background-color: #f44336;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 3px #d32f2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bouton__retirer_action:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px #d32f2f;
+}
+
+.bouton__retirer_action:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px #d32f2f;
+}
+
 /* ----- Modifier ----- */
+.bouton__modifier_action {
+  min-width: 66px;
+}
 
 .bouton__modifier {
   text-decoration: none;

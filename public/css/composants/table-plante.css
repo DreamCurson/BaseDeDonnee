@@ -1,6 +1,7 @@
 .table-plante-boite {
   padding: 10px;
   padding-top: 20px;
+  margin-bottom: 3rem;
 }
 
 .page-title {
@@ -41,6 +42,8 @@
 .table-plante__cell {
   padding: 14px 18px;
   border-bottom: 2px solid #dfeee3;
+  border-right: 2px solid #dfeee3;
+  border-left: none;
 }
 
 .table-plante__cell--head {
@@ -69,9 +72,13 @@
   text-decoration: underline;
 }
 
-.table-plante__cell {
+.table-plante__cell_modifier {
+  padding: 14px 18px;
+  border-bottom: 2px solid #dfeee3;
   border-right: 2px solid #dfeee3;
   border-left: none;
+  display: flex;
+  justify-content: center;
 }
 
 .table-plante__cell--head {
