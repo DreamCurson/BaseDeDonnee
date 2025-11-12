@@ -84,4 +84,21 @@ class AdminController {
         }
     }
 
+    public function deleteUser($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+        
+        $utilisateur = new Utilisateur;
+        $delete = $utilisateur->delete($data['id']);
+
+        if($delete){
+            return View::redirect('admin');
+        }else{
+            return View::render('error', ['msg'=>'Could not delete!']);
+        }
+    }
+
 }

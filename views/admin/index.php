@@ -57,7 +57,7 @@
                         <img src="{{ img }}edit.png" alt="Modifier" class="bouton__modifier-icon">
                     </a>
                 </td>
-                <td class="table-plante__cell_modifier"><a href="" class="bouton__retirer_action">-</a></td>
+                <td class="table-plante__cell_modifier"><a href="admin-supprimerUtilisateur?id={{ utilisateur.idUtilisateur }}" class="bouton__retirer_action">-</a></td>
             </tr>
             {% endfor %}
         </tbody>
