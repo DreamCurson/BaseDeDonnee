@@ -2,7 +2,7 @@
 <div class="table-plante-boite">
     <h2 class="page-title">Liste des utilisateurs</h1>
     <p class="formulaireInscription__texte">
-        <a href="" class="formulaireInscription__lien bottom">Ajouter un utilisateur</a>
+        <a href="admin-ajouterUtilisateur" class="formulaireInscription__lien bottom">Ajouter un utilisateur</a>
     </p>
 
     <table class="table-plante">

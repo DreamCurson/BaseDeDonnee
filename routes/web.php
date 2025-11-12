@@ -50,5 +50,6 @@ Route::get('/admin-supprimerPlante', 'AdminController@deletePlante');
 Route::get('/admin-supprimerUtilisateur', 'AdminController@deleteUser');
 Route::get('/admin-modifierUtilisateur', 'AdminController@modifierUser');
 Route::post('/admin-modifierUtilisateur', 'AdminController@updateUser');
+Route::get('/admin-ajouterUtilisateur', 'AdminController@addUser');
 
 Route::dispatch();

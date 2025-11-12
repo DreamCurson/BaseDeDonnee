@@ -112,7 +112,7 @@ class AdminController {
             $utilisateur = new Utilisateur;
             $selectId = $utilisateur->selectId($data['id']);
             if($selectId){
-                return View::render("admin/editUser", ['utilisateur' => $selectId]);
+                return View::render("admin/edit-user", ['utilisateur' => $selectId]);
             }else{
                 return View::render('connexion');
             }
@@ -120,6 +120,12 @@ class AdminController {
     }
 
     public function updateUser($data = [], $get = []) {
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
         if(isset($get['id']) && $get['id'] != null){
             $validator = new Validator;
             $utilisateur = new Utilisateur;
@@ -156,9 +162,19 @@ class AdminController {
                 }
             } else {
                 $errors = $validator->getErrors();
-                return View::render('admin/editUser', ['errors'=>$errors, 'utilisateur'=>$data]);
+                return View::render('admin/edit-user', ['errors'=>$errors, 'utilisateur'=>$data]);
             }
         }
+    }
+
+    public function addUser(){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+        
+        return View::render("admin/create-user");
     }
 
 }

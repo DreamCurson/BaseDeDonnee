@@ -1,4 +1,4 @@
-{{ include('layouts/header.php', {title: 'DreamPlante | Modifier un utilisateur'})}}
+{{ include('layouts/header.php', {title: 'Admin | Modifier un utilisateur'})}}
 <script type="module" src="{{ asset }}script/main.js"></script>
 
     <div class="formulaireUtilisateur">
