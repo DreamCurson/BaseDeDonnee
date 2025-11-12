@@ -18,7 +18,7 @@
                 </td>
                 <td class="table-plante__cell">{{ utilisateur.motDePasse }}</td>
                 <td class="table-plante__cell_modifier">
-                    <a href="" class="bouton__modifier_petit bouton__modifier_action">
+                    <a href="admin-modifierUtilisateur?id={{ utilisateur.idUtilisateur }}" class="bouton__modifier_petit bouton__modifier_action">
                         <img src="{{ img }}edit.png" alt="Modifier" class="bouton__modifier-icon">
                     </a>
                 </td>

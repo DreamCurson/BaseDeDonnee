@@ -101,4 +101,64 @@ class AdminController {
         }
     }
 
+    public function modifierUser($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
+        if(isset($data['id']) && $data['id']!=null){
+            $utilisateur = new Utilisateur;
+            $selectId = $utilisateur->selectId($data['id']);
+            if($selectId){
+                return View::render("admin/editUser", ['utilisateur' => $selectId]);
+            }else{
+                return View::render('connexion');
+            }
+        }
+    }
+
+    public function updateUser($data = [], $get = []) {
+        if(isset($get['id']) && $get['id'] != null){
+            $validator = new Validator;
+            $utilisateur = new Utilisateur;
+
+            $validator->field('nomUtilisateur', $data['nomUtilisateur'])->required()->min(2)->max(45)
+                ->unique(function($value) use ($data) {
+                    session_start();
+                    $utilisateur = new Utilisateur;
+                    return $utilisateur->valueExists('nomUtilisateur', $value) && $value !== $_SESSION['nomUtilisateur'];
+                });
+            $validator->field('email', $data['email'])->email()->max(45);
+            if(!empty($data['motDePasse'])) {
+                $validator->field('motDePasse', $data['motDePasse'])->min(4)->max(25);
+            }
+
+            if($validator->isSuccess()){
+                $utilisateur = new Utilisateur;
+
+                if(empty($data['motDePasse'])) {
+                    unset($data['motDePasse']);
+                } else {
+                    $data['motDePasse'] = $utilisateur->hashPassword($data['motDePasse']);
+                }
+
+                $update = $utilisateur->update($data, $get['id']);
+                if($update){
+                    if(isset($data['nomUtilisateur'])){
+                        session_start();
+                        $_SESSION['nomUtilisateur'] = $data['nomUtilisateur'];
+                    }
+                    return View::redirect('admin');
+                } else {
+                    return View::render('error', ['msg'=>'Modification impossible pour le moment']);
+                }
+            } else {
+                $errors = $validator->getErrors();
+                return View::render('admin/editUser', ['errors'=>$errors, 'utilisateur'=>$data]);
+            }
+        }
+    }
+
 }
