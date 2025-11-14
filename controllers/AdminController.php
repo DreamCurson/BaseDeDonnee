@@ -177,4 +177,34 @@ class AdminController {
         return View::render("admin/create-user");
     }
 
+    public function saveUser($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
+        $utilisateur = new Utilisateur;
+
+        $validator = new Validator;
+        $validator->field('nomUtilisateur', $data['nomUtilisateur'])->required()->min(2)->max(50)->unique(function($value) use ($utilisateur) {
+            return $utilisateur->valueExists('nomUtilisateur', $value);
+        });
+        $validator->field('motDePasse', $data['motDePasse'])->required()->min(3)->max(25);
+        $validator->field('email', $data['email'])->max(50)->email();
+
+        if($validator->isSuccess()){
+            $data['motDePasse'] = $utilisateur->hashPassword($data['motDePasse']);
+            $insert = $utilisateur->insert($data);
+            if($insert){
+                return view::redirect('admin');
+            }else{
+                return view::render('error');
+            }
+        }else{
+            $errors = $validator->getErrors();
+            return view::render('admin/create-user', ['errors'=>$errors, 'utilisateur' =>$data]);
+        }
+    }
+
 }

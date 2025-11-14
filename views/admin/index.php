@@ -65,4 +65,9 @@
     </table>
 </div>
 
+<div class="table-plante-boite">
+    <h2 class="page-title">Liste des Icons</h1>
+
+</div>
+
 {{ include('layouts/footer.php') }}
