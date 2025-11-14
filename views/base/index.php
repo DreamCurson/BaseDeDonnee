@@ -53,6 +53,14 @@
                     <p>Âge : {{ planteSelectionnee.ageTexte }}</p>
                 </div>
 
+                <aside class="icon_aside">
+                    <form action="uploadIcon" method="post" enctype="multipart/form-data">
+                        Selectionne ou ajoute ton icone:
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" value="Upload Image" name="submit">
+                    </form>
+                </aside>
+
             {% elseif plantesUtilisateur is empty %}
                 <!-- Aucune plante encore ajoutée -->
                 <div class="dreamplante__aucune">

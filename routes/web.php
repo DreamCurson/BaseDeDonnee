@@ -52,4 +52,6 @@ Route::get('/admin-modifierUtilisateur', 'AdminController@modifierUser');
 Route::post('/admin-modifierUtilisateur', 'AdminController@updateUser');
 Route::get('/admin-ajouterUtilisateur', 'AdminController@addUser');
 
+Route::post('/uploadIcon', 'IconController@store');
+
 Route::dispatch();
