@@ -21,9 +21,9 @@ class IconController {
 
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
             if ($check !== false) {
-                echo "C'est un image - " . $check["mime"] . ".";
+                // echo "C'est un image - " . $check["mime"] . ".";
             } else {
-                echo "C'est pas un image.";
+                // echo "C'est pas un image.";
                 return;
             }
 
@@ -31,9 +31,7 @@ class IconController {
 
             $icon->iconData = $fileContent;
 
-            if ($icon->store()) {
-                echo "Icon sauvegardé.";
-            }
+            $icon->store();
         } else {
             echo "Erreur.";
         }

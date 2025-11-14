@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Models\CRUD;
+use App\Providers\View;
 
 class Icon extends CRUD {
 
@@ -17,9 +18,9 @@ class Icon extends CRUD {
             
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
             if ($check !== false) {
-                echo "C'est un image - " . $check["mime"] . ".";
+                // echo "C'est un image - " . $check["mime"] . ".";
             } else {
-                echo "Ceci n'est pas un image.";
+                // echo "Ceci n'est pas un image.";
                 return;
             }
 
@@ -32,7 +33,7 @@ class Icon extends CRUD {
             $insertId = $this->insert($data);
 
             if ($insertId) {
-                echo "Réussite avec ID: " . $insertId;
+                return View::redirect('dreamplante');
             }
         } else {
             echo "Erreur.";

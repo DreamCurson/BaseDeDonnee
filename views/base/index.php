@@ -53,9 +53,10 @@
                     <p>Âge : {{ planteSelectionnee.ageTexte }}</p>
                 </div>
 
+                <!-- SAUVEGARDE UN IMAGE -->
                 <aside class="icon_aside">
                     <form action="uploadIcon" method="post" enctype="multipart/form-data">
-                        Selectionne ou ajoute ton icone:
+                        Ajoute ton icone :
                         <input type="file" name="fileToUpload" id="fileToUpload">
                         <input type="submit" value="Upload Image" name="submit">
                     </form>
