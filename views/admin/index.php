@@ -33,7 +33,7 @@
 <div class="table-plante-boite">
     <h2 class="page-title">Liste des plantes</h1>
     <p class="formulaireInscription__texte">
-        <a href="" class="formulaireInscription__lien bottom">Ajouter une plante</a>
+        <a href="admin-ajouterPlante" class="formulaireInscription__lien bottom">Ajouter une plante</a>
     </p>
 
     <table class="table-plante">

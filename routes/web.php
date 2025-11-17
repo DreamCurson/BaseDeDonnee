@@ -45,6 +45,8 @@ Route::get('/admin-connexion', 'AdminController@connexion');
 Route::post('/admin-connexion', 'AdminController@validate');
 Route::get('/admin', 'AdminController@index');
 
+Route::get('/admin-ajouterPlante', 'AdminController@addPlante');
+Route::post('/admin-ajouterPlante', 'AdminController@savePlante');
 Route::get('/admin-supprimerPlante', 'AdminController@deletePlante');
 
 Route::get('/admin-supprimerUtilisateur', 'AdminController@deleteUser');

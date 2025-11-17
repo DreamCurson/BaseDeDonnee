@@ -207,4 +207,59 @@ class AdminController {
         }
     }
 
+    public function addPlante() {
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
+        $utilisateurModel = new Utilisateur();
+        $utilisateurs = $utilisateurModel->select();
+
+        return View::render("admin/create-plante", [
+            'utilisateurs' => $utilisateurs
+        ]);
+    }
+
+
+    public function savePlante($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
+        $plante = new Plante();
+
+        $validator = new Validator();
+        $validator->field('nom', $data['nom'])->required()->min(3)->max(50);
+        $validator->field('dateAcquisition', $data['dateAcquisition'])->required()->min(8)->max(10);
+
+        $validator->field('utilisateur_idUtilisateur', $data['utilisateur_idUtilisateur'])->required();
+
+        if ($validator->isSuccess()) {
+            $insert = $plante->insert($data);
+
+            if ($insert) {
+                return View::redirect('admin');
+            } else {
+                return View::render('error');
+            }
+
+        } else {
+            $utilisateurModel = new Utilisateur();
+            $utilisateurs = $utilisateurModel->select();
+
+            $errors = $validator->getErrors();
+
+            return View::render('admin/create-plante', [
+                'errors' => $errors,
+                'plante' => $data,
+                'utilisateurs' => $utilisateurs
+            ]);
+        }
+    }
+
+
 }

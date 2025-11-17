@@ -1,5 +1,5 @@
 {{ include('layouts/header.php', {title: 'Admin | Créer un utilisateur'})}}
-
+<body class="formulaire__background ">
     <div class="formulaireInscription">
         <h2 class="formulaireInscription__titre">Ajouter un utilisateur</h2>
 
