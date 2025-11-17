@@ -44,7 +44,7 @@
         <div class="section note-info">
             <div class="dreamplante__entete">
                 <h2 class="section-title">Notes</h2>
-                <a href="" class="bouton__ajouter">+</a>
+                <a href="admin-ajouterNote?id={{ plante.idPlante }}" class="bouton__ajouter">+</a>
             </div>
 
             {% if notes is not empty %}

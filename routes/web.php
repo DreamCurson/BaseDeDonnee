@@ -56,6 +56,9 @@ Route::get('/admin-supprimerPlante', 'AdminController@deletePlante');
 Route::get('/admin-ajouterEvenement', 'AdminController@addEvenement');
 Route::post('/admin-ajouterEvenement', 'AdminController@saveEvenement');
 
+Route::get('/admin-ajouterNote', 'AdminController@addNote');
+Route::post('/admin-ajouterNote', 'AdminController@saveNote');
+
 Route::get('/admin-supprimerUtilisateur', 'AdminController@deleteUser');
 Route::get('/admin-modifierUtilisateur', 'AdminController@editUser');
 Route::post('/admin-modifierUtilisateur', 'AdminController@updateUser');

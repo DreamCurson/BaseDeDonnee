@@ -56,8 +56,6 @@ class NoteController {
         }
     }
 
-
-
     public function update($data = [], $get = []) {
         if(isset($get['id']) && $get['id'] != null){
             $validator = new Validator;

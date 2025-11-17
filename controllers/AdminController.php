@@ -389,6 +389,12 @@ class AdminController {
 
 
     public function saveEvenement($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
         $validator = new Validator;
         $validator->field('commentaire', $data['commentaire'])->required()->min(3)->max(200);
         $validator->field('idTypeEvenement', $data['idTypeEvenement'], 'typeEvenement')->required()->int();
@@ -407,6 +413,32 @@ class AdminController {
     }
 
     // --------- Notes ---------
+    public function addNote($id){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
+        return View::render('admin/create-note', [
+            'idPlante' => $id['id']
+        ]);
+    }
+
+    public function saveNote($data){
+        $validator = new Validator;
+        $validator->field('titre', $data['titre'])->required()->min(3)->max(200);
+
+        if($validator->isSuccess()){
+            $note = new Note;
+            $insert = $note->insert($data);
+            return View::redirect('admin-planteInfo?id=' . $data['idPlante']);
+        }else{
+            $errors = $validator->getErrors();
+
+            return View::render('admin/create-note', ['errors'=>$errors, 'note'=>$data, 'idPlante' => $data['idPlante']]);
+        }
+    }
 
 
 }

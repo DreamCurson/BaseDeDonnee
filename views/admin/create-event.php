@@ -1,4 +1,4 @@
-{{ include('layouts/header.php', {title: 'DreamPlante | Ajouter une plante'}) }}
+{{ include('layouts/header.php', {title: 'Admin | Ajouter une plante'}) }}
 <body class="formulaire__background">
     <div class="formulaire">
         <h1 class="formulaire__title">Ajouter un événement</h1>
