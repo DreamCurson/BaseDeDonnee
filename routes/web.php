@@ -66,6 +66,7 @@ Route::get('/admin-ajouterUtilisateur', 'AdminController@addUser');
 Route::post('/admin-ajouterUtilisateur', 'AdminController@saveUser');
 
 // Icon
+Route::post('/admin-deleteIcon', 'AdminController@deleteIcon');
 Route::post('/uploadIcon', 'IconController@store');
 
 Route::dispatch();

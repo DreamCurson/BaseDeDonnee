@@ -445,5 +445,25 @@ class AdminController {
         }
     }
 
+    // ------------ Icon ------------ 
+    public function deleteIcon($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
 
+        if (isset($data['idIcon'])) {
+            $iconModel = new Icon();
+            $deleteSuccess = $iconModel->delete($data['idIcon']);
+
+            if ($deleteSuccess) {
+                View::redirect('admin');
+            } else {
+                View::render('error', ['error' => 'Impossible à supprimer.']);
+            }
+        } else {
+            View::render('error', ['error' => 'Icon ID introuvable.']);
+        }
+    }
 }
