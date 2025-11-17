@@ -69,6 +69,7 @@ class AdminController {
         ]);
     }
 
+    // --------- UTILISATEUR ---------
     public function addUser(){
         session_start();
         if (!isset($_SESSION['nomUtilisateurAdmin'])) {
@@ -192,6 +193,7 @@ class AdminController {
         }
     }
 
+    // --------- PLANTE ---------
     public function deletePlante($data){
         session_start();
         if (!isset($_SESSION['nomUtilisateurAdmin'])) {

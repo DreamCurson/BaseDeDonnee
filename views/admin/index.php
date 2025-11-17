@@ -1,4 +1,8 @@
 {{ include('layouts/headerAdmin.php', {title:'Dreamplante Admin'}) }}
+<aside>
+    <a class="dreamplante__deconnexion" href="logout">Déconnexion</a>
+</aside>
+
 <div class="table-plante-boite">
     <h2 class="page-title">Liste des utilisateurs</h1>
     <p class="formulaireInscription__texte">
