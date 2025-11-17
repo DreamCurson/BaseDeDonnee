@@ -8,7 +8,7 @@
         <div class="section plante-info">
             <div class="dreamplante__entete">
                 <h2 class="section-title">Plante</h2>
-                <a href="planteModifie?id={{ plante.idPlante }}" class="bouton__modifier">
+                <a href="admin-modifierPlante?id={{ plante.idPlante }}" class="bouton__modifier">
                     <img src="{{ img }}edit.png" alt="Modifier" class="bouton__modifier-icon">
                 </a>
             </div>
@@ -65,6 +65,10 @@
             <button type="button" class="formulaireUtilisateur__delete">Supprimer la plante</button>
             <a href="admin-supprimerPlante?id={{ plante.idPlante }}" class="formulaireUtilisateur__confirmation">Vous êtes sûr ?</a>
         </div>
+
+        <p class="formulaireInscription__texte">
+            <a href="admin" class="formulaireInscription__lien">Retour</a>
+        </p>
     </div>
 </body>
 

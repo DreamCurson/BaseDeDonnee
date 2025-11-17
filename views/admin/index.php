@@ -54,7 +54,7 @@
                 <td class="table-plante__cell">{{ plante.dateAcquisition }}</td>
                 <td class="table-plante__cell">{{ plante.utilisateur_nomUtilisateur }}</td>
                 <td class="table-plante__cell_modifier">
-                    <a href="admin-modifierPlante?id={{ plante.idPlante }}" class="bouton__modifier_petit bouton__modifier_action">
+                    <a href="admin-planteInfo?id={{ plante.idPlante }}" class="bouton__modifier_petit bouton__modifier_action">
                         <img src="{{ img }}edit.png" alt="Modifier" class="bouton__modifier-icon">
                     </a>
                 </td>

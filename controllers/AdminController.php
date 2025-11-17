@@ -263,7 +263,7 @@ class AdminController {
         }
     }
 
-    public function editPlante($data) {
+    public function planteInfo($data) {
         session_start();
         if (!isset($_SESSION['nomUtilisateurAdmin'])) {
             View::redirect('connexion');
@@ -278,7 +278,7 @@ class AdminController {
                 $utilisateurModel = new Utilisateur();
                 $utilisateur = $utilisateurModel->selectId($selectId['utilisateur_idUtilisateur']);
                 
-                $selectId['nomUtilisateur'] = $utilisateur ? $utilisateur['nomUtilisateur'] : 'Non attribué';
+                $selectId['nomUtilisateur'] = $utilisateur['nomUtilisateur'];
                 
                 $evenementModel = new Evenement();
                 $evenements = $evenementModel->selectBy('idPlante', $data['id']);
@@ -297,5 +297,50 @@ class AdminController {
         }
     }
 
+    public function editPlante($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
+        if(isset($data['id']) && $data['id']!=null){
+            $plante = new Plante;
+            $selectId = $plante->selectId($data['id']);
+
+            $utilisateurModel = new Utilisateur();
+            $utilisateurs = $utilisateurModel->select();
+            if($selectId){
+                return View::render("admin/edit-plante", ['plante' => $selectId, 'utilisateurs' => $utilisateurs]);
+            }else{
+                return View::render('connexion/index');
+            }
+        }else{
+             return View::render('connexion/index');
+        }
+    }
+
+    public function updatePlante($data = [], $get = []) {
+        if(isset($get['id']) && $get['id'] != null){
+            $validator = new Validator;
+            
+            $validator->field('nom', $data['nom'])->required()->min(3)->max(50);
+            $validator->field('dateAcquisition', $data['dateAcquisition'])->required()->min(8)->max(10);
+
+            if($validator->isSuccess()){
+                $plante = new Plante;
+                $update = $plante->update($data, $get['id']);
+
+                if($update){
+                    return View::redirect('admin-planteInfo?id=' . $get['id']);
+                } else {
+                    return View::render('error', ['msg'=>'Modification impossible pour le moment']);
+                }
+            } else {
+                $errors = $validator->getErrors();
+                return View::render('admin/edit-plante', ['errors'=>$errors, 'plante'=>$data]);
+            }
+        }
+    }
 
 }
