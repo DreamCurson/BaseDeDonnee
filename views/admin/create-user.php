@@ -25,7 +25,7 @@
                 <input type="password" name="motDePasse" class="formulaireInscription__input" required>
             </label>
 
-            <input type="submit" value="S'inscrire" class="formulaireInscription__bouton">
+            <input type="submit" value="Inscrire l'utilisateur" class="formulaireInscription__bouton">
         </form>
 
         <p class="formulaireInscription__texte">
