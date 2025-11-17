@@ -58,9 +58,10 @@
                     <form action="uploadIcon" method="post" enctype="multipart/form-data">
                         Ajoute ton icone :
                         <input type="file" name="fileToUpload" id="fileToUpload">
-                        <input type="submit" value="Upload Image" name="submit">
+                        <input type="submit" value="Ajouter l'icone" name="submit">
                     </form>
                 </aside>
+                <p>* Seulement les administrateurs peuvent voir les icones pour le moment</p>
 
             {% elseif plantesUtilisateur is empty %}
                 <!-- Aucune plante encore ajoutée -->

@@ -1,0 +1,46 @@
+.icon_aside {
+  max-width: 350px;
+  margin: 30px 0px;
+  padding: 20px 0px;
+  background-color: #f1f8f4;
+  border: 1px solid #cfe3d3;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  color: #2f3e35;
+}
+
+.icon_aside form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.icon_aside label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.icon_aside input[type="file"] {
+  padding: 5px;
+  border: 1px solid #cfe3d3;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.icon_aside input[type="submit"] {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2f6b52;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.icon_aside input[type="submit"]:hover {
+  background-color: #246044;
+}
