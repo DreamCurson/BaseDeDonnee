@@ -337,8 +337,10 @@ class AdminController {
                     return View::render('error', ['msg'=>'Modification impossible pour le moment']);
                 }
             } else {
+                $utilisateurModel = new Utilisateur();
+                $utilisateurs = $utilisateurModel->select();
                 $errors = $validator->getErrors();
-                return View::render('admin/edit-plante', ['errors'=>$errors, 'plante'=>$data]);
+                return View::render('admin/edit-plante', ['errors'=>$errors, 'plante'=>$data, 'utilisateurs'=>$utilisateurs]);
             }
         }
     }

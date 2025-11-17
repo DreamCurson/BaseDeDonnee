@@ -1,6 +1,6 @@
 {{ include('layouts/header.php', {title: 'Admin | Modifier un utilisateur'})}}
 <script type="module" src="{{ asset }}script/main.js"></script>
-
+<body class="formulaire__background">
     <div class="formulaireUtilisateur">
         <h1 class="formulaireUtilisateur__title">Modifier l'utilisateur</h1>
         <form class="formulaireUtilisateur__form" method="post">
