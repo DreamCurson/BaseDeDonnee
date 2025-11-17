@@ -45,3 +45,91 @@
 .icon_aside input[type="submit"]:hover {
   background-color: #246044;
 }
+
+.icon-upload {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto 50px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon-upload__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.icon-upload__label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.icon-upload__input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.icon-upload__submit {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.icon-upload__submit:hover {
+  background-color: #45a049;
+}
+
+.icon-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.icon-gallery__item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.icon-gallery__image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.icon-gallery__delete-form {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.icon-gallery__delete-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.icon-gallery__delete-btn:hover {
+  background-color: #e53935;
+}

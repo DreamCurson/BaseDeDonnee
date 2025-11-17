@@ -9,6 +9,7 @@ use App\Models\Utilisateur;
 use App\Models\Note;
 use App\Models\Evenement;
 use App\Models\TypeEvenement;
+use App\Models\Icon;
 
 class AdminController {
     public function connexion(){
@@ -48,27 +49,31 @@ class AdminController {
 
         $planteModel = new Plante();
         $utilisateurModel = new Utilisateur();
+        $iconModel = new Icon();
 
         $plantes = $planteModel->select();
         $utilisateurs = $utilisateurModel->select();
+        $icons = $iconModel->select();
 
         foreach ($plantes as &$plante) {
             $idUtilisateur = $plante['utilisateur_idUtilisateur'];
-
             $utilisateur = $utilisateurModel->selectId($idUtilisateur);
+            $plante['utilisateur_nomUtilisateur'] = $utilisateur ? $utilisateur['nomUtilisateur'] : 'Utilisateur inconnu';
+        }
 
-            if ($utilisateur) {
-                $plante['utilisateur_nomUtilisateur'] = $utilisateur['nomUtilisateur'];
-            } else {
-                $plante['utilisateur_nomUtilisateur'] = 'Utilisateur inconnu';
-            }
+        // Convert icon BLOBs to base64
+        foreach ($icons as &$icon) {
+            $icon['iconBase64'] = base64_encode($icon['iconData']);
         }
 
         return View::render('admin/index', [
             'plantes' => $plantes,
-            'utilisateurs' => $utilisateurs
+            'utilisateurs' => $utilisateurs,
+            'icons' => $icons
         ]);
     }
+
+
 
     // --------- UTILISATEUR ---------
     public function addUser(){

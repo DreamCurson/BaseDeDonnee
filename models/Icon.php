@@ -33,7 +33,11 @@ class Icon extends CRUD {
             $insertId = $this->insert($data);
 
             if ($insertId) {
-                return View::redirect('dreamplante');
+                if (isset($_SESSION['nomUtilisateurAdmin'])) {
+                    return View::redirect('admin');
+                } else {
+                    return View::redirect('dreamplante');
+                }
             }
         } else {
             echo "Erreur.";

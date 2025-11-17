@@ -9,7 +9,7 @@ class IconController {
     public function __construct() {
         session_start();
 
-        if(!isset($_SESSION['nomUtilisateur'])){
+        if (!isset($_SESSION['nomUtilisateur']) && !isset($_SESSION['nomUtilisateurAdmin'])) {
             View::redirect('connexion');
             exit;
         }

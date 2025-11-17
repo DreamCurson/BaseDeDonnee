@@ -69,9 +69,26 @@
     </table>
 </div>
 
-<div class="table-plante-boite">
-    <h2 class="page-title">Liste des Icons</h1>
+<h2 class="page-title">Liste des Icônes</h2>
 
+<div class="icon-gallery">
+    {% for icon in icons %}
+        <div class="icon-gallery__item">
+            <img src="data:image/png;base64,{{ icon.iconBase64 }}" alt="Icône {{ icon.idIcon }}" class="icon-gallery__image">
+            <form class="icon-gallery__delete-form" action="admin-deleteIcon" method="post">
+                <input type="hidden" name="idIcon" value="{{ icon.idIcon }}">
+                <button type="submit" class="icon-gallery__delete-btn">Supprimer</button>
+            </form>
+        </div>
+    {% endfor %}
 </div>
+
+<aside class="icon-upload">
+    <form class="icon-upload__form" action="uploadIcon" method="post" enctype="multipart/form-data">
+        <label class="icon-upload__label" for="fileToUpload">Ajouter un icone :</label>
+        <input type="file" name="fileToUpload" id="fileToUpload" class="icon-upload__input">
+        <input type="submit" value="Ajouter l'icône" name="submit" class="icon-upload__submit">
+    </form>
+</aside>
 
 {{ include('layouts/footer.php') }}
