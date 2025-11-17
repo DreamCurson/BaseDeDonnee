@@ -6,6 +6,8 @@ use App\Models\Admin;
 use App\Providers\Validator;
 use App\Models\Plante;
 use App\Models\Utilisateur;
+use App\Models\Note;
+use App\Models\Evenement;
 
 class AdminController {
     public function connexion(){
@@ -258,6 +260,40 @@ class AdminController {
                 'plante' => $data,
                 'utilisateurs' => $utilisateurs
             ]);
+        }
+    }
+
+    public function editPlante($data) {
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
+        if (isset($data['id']) && $data['id'] != null) {
+            $plante = new Plante;
+            $selectId = $plante->selectId($data['id']);
+            
+            if ($selectId) {
+                $utilisateurModel = new Utilisateur();
+                $utilisateur = $utilisateurModel->selectId($selectId['utilisateur_idUtilisateur']);
+                
+                $selectId['nomUtilisateur'] = $utilisateur ? $utilisateur['nomUtilisateur'] : 'Non attribué';
+                
+                $evenementModel = new Evenement();
+                $evenements = $evenementModel->selectBy('idPlante', $data['id']);
+
+                $noteModel = new Note();
+                $notes = $noteModel->selectBy('idPlante', $data['id']);
+
+                return View::render("admin/plante-index", [
+                    'plante' => $selectId,
+                    'evenements' => $evenements,
+                    'notes' => $notes
+                ]);
+            } else {
+                return View::render('connexion');
+            }
         }
     }
 

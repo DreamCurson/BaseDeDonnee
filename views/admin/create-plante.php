@@ -40,7 +40,7 @@
 
             <label class="formulairePlante__label">
                 Type de plante
-                <input type="text" name="typePlante" class="formulairePlante__input" value="{{ plante.typePlante }}" required>
+                <input type="text" name="typePlante" class="formulairePlante__input" value="{{ plante.typePlante }}">
             </label>
 
 

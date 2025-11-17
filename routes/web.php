@@ -47,6 +47,8 @@ Route::get('/admin', 'AdminController@index');
 
 Route::get('/admin-ajouterPlante', 'AdminController@addPlante');
 Route::post('/admin-ajouterPlante', 'AdminController@savePlante');
+Route::get('/admin-modifierPlante', 'AdminController@editPlante');
+
 Route::get('/admin-supprimerPlante', 'AdminController@deletePlante');
 
 Route::get('/admin-supprimerUtilisateur', 'AdminController@deleteUser');
