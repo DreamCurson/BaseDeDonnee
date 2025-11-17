@@ -23,7 +23,7 @@
         <div class="section evenement-info">
             <div class="dreamplante__entete">
                 <h2 class="section-title">Événements</h2>
-                <a href="" class="bouton__ajouter">+</a>
+                <a href="admin-ajouterEvenement?id={{ plante.idPlante }}" class="bouton__ajouter">+</a>
             </div>
 
             {% if evenements is not empty %}
@@ -31,7 +31,7 @@
                     {% for evenement in evenements %}
                         <div class="event-item">
                             <p><strong>Date:</strong> {{ evenement.date }}</p>
-                            <p><strong>Type d'événement:</strong> {{ evenement.idTypeEvenement }}</p>
+                            <p><strong>Type d'événement:</strong> {{ evenement.typeEvenement }}</p>
                             <p><strong>Commentaire:</strong> {{ evenement.commentaire }}</p>
                         </div>
                     {% endfor %}

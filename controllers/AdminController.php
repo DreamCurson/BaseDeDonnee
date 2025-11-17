@@ -8,6 +8,7 @@ use App\Models\Plante;
 use App\Models\Utilisateur;
 use App\Models\Note;
 use App\Models\Evenement;
+use App\Models\TypeEvenement;
 
 class AdminController {
     public function connexion(){
@@ -273,17 +274,22 @@ class AdminController {
         }
 
         if (isset($data['id']) && $data['id'] != null) {
-            $plante = new Plante;
-            $selectId = $plante->selectId($data['id']);
+            $planteModel = new Plante();
+            $selectId = $planteModel->selectId($data['id']);
             
             if ($selectId) {
                 $utilisateurModel = new Utilisateur();
                 $utilisateur = $utilisateurModel->selectId($selectId['utilisateur_idUtilisateur']);
-                
                 $selectId['nomUtilisateur'] = $utilisateur['nomUtilisateur'];
-                
+
                 $evenementModel = new Evenement();
                 $evenements = $evenementModel->selectBy('idPlante', $data['id']);
+
+                $typeEvenementModel = new TypeEvenement();
+                foreach ($evenements as &$evenement) {
+                    $type = $typeEvenementModel->selectId($evenement['idTypeEvenement']);
+                    $evenement['typeEvenement'] = $type['typeEvenement'];
+                }
 
                 $noteModel = new Note();
                 $notes = $noteModel->selectBy('idPlante', $data['id']);
@@ -346,5 +352,61 @@ class AdminController {
             }
         }
     }
+
+    // --------- Événements ---------
+    public function addEvenement($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+
+        $idPlante = null;
+        if (isset($data['id']) && !empty($data['id'])) {
+            $idPlante = $data['id'];
+        }
+
+        $typeModel = new TypeEvenement();
+        $typesEvenement = $typeModel->select();
+
+        $planteSelectionnee = null;
+        if ($idPlante) {
+            $planteModel = new Plante();
+            $planteSelectionnee = $planteModel->selectId($idPlante);
+
+            if (!$planteSelectionnee) {
+                return View::render('error', ['msg' => 'Plante non trouvée']);
+            }
+        } else {
+            return View::render('error', ['msg' => 'Aucun idPlante fourni']);
+        }
+
+        return View::render('admin/create-event', [
+            'typesEvenement' => $typesEvenement,
+            'planteSelectionnee' => $planteSelectionnee
+        ]);
+    }
+
+
+    public function saveEvenement($data){
+        $validator = new Validator;
+        $validator->field('commentaire', $data['commentaire'])->required()->min(3)->max(200);
+        $validator->field('idTypeEvenement', $data['idTypeEvenement'], 'typeEvenement')->required()->int();
+
+        if($validator->isSuccess()){
+            $evenement = new Evenement;
+            $insert = $evenement->insert($data);
+            return View::redirect('admin-planteInfo?id=' . $data['idPlante']);
+        }else{
+            $errors = $validator->getErrors();
+            $typeEvenements = new TypeEvenement;
+            $select = $typeEvenements->select('typeevenement');
+
+            return View::render('admin/create-event', ['errors'=>$errors, 'typesEvenement'=>$select, 'evenement'=>$data]);
+        }
+    }
+
+    // --------- Notes ---------
+
 
 }

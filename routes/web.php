@@ -41,6 +41,7 @@ Route::get('/noteEdit', 'NoteController@edit');
 Route::post('/noteEdit', 'NoteController@update');
 Route::get('/noteDelete', 'NoteController@delete');
 
+// Admin 
 Route::get('/admin-connexion', 'AdminController@connexion');
 Route::post('/admin-connexion', 'AdminController@validate');
 Route::get('/admin', 'AdminController@index');
@@ -52,12 +53,16 @@ Route::get('/admin-modifierPlante', 'AdminController@editPlante');
 Route::post('/admin-modifierPlante', 'AdminController@updatePlante');
 Route::get('/admin-supprimerPlante', 'AdminController@deletePlante');
 
+Route::get('/admin-ajouterEvenement', 'AdminController@addEvenement');
+Route::post('/admin-ajouterEvenement', 'AdminController@saveEvenement');
+
 Route::get('/admin-supprimerUtilisateur', 'AdminController@deleteUser');
 Route::get('/admin-modifierUtilisateur', 'AdminController@editUser');
 Route::post('/admin-modifierUtilisateur', 'AdminController@updateUser');
 Route::get('/admin-ajouterUtilisateur', 'AdminController@addUser');
 Route::post('/admin-ajouterUtilisateur', 'AdminController@saveUser');
 
+// Icon
 Route::post('/uploadIcon', 'IconController@store');
 
 Route::dispatch();
