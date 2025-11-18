@@ -445,6 +445,23 @@ class AdminController {
         }
     }
 
+    public function deleteNote($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+        
+        $note = new Note;
+        $delete = $note->delete($data['id']);
+
+        if($delete){
+            return View::redirect('admin-planteInfo?id=' . $data['idPlante']);
+        }else{
+            return View::render('error', ['msg'=>'Could not delete!']);
+        }
+    }
+
     // ------------ Icon ------------ 
     public function deleteIcon($data){
         session_start();

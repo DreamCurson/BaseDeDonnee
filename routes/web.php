@@ -58,6 +58,7 @@ Route::post('/admin-ajouterEvenement', 'AdminController@saveEvenement');
 
 Route::get('/admin-ajouterNote', 'AdminController@addNote');
 Route::post('/admin-ajouterNote', 'AdminController@saveNote');
+Route::get('/admin-supprimerNote', 'AdminController@deleteNote');
 
 Route::get('/admin-supprimerUtilisateur', 'AdminController@deleteUser');
 Route::get('/admin-modifierUtilisateur', 'AdminController@editUser');

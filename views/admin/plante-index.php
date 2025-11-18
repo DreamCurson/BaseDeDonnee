@@ -55,7 +55,7 @@
                                 <p><strong>Titre:</strong> {{ note.titre }}</p>
                                 <p><strong>Contenu:</strong> {{ note.contenu }}</p>
                             </div>
-                            <a href="admin-deleteNote?id={{ note.idNote }}" class="bouton__retirer">-</a>
+                            <a href="admin-supprimerNote?id={{ note.idNote }}&idPlante={{ plante.idPlante }}" class="bouton__retirer">-</a>
                         </div>
                     {% endfor %}
                 </div>
