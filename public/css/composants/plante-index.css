@@ -43,11 +43,8 @@
   color: #2f6b52;
   font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: 15px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 2px solid #cfe3d3;
-  padding-bottom: 10px;
 }
 
 .section-content p {
@@ -97,4 +94,19 @@
   section p {
     font-size: 1rem;
   }
+}
+
+.note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-item-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin {
+  margin-bottom: 20px;
 }

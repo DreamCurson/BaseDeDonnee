@@ -6,7 +6,7 @@
         <h1 class="page-title">Information sur la plante</h1>
 
         <div class="section plante-info">
-            <div class="dreamplante__entete">
+            <div class="dreamplante__entete margin">
                 <h2 class="section-title">Plante</h2>
                 <a href="admin-modifierPlante?id={{ plante.idPlante }}" class="bouton__modifier">
                     <img src="{{ img }}edit.png" alt="Modifier" class="bouton__modifier-icon">
@@ -21,7 +21,7 @@
         </div>
 
         <div class="section evenement-info">
-            <div class="dreamplante__entete">
+            <div class="dreamplante__entete margin">
                 <h2 class="section-title">Événements</h2>
                 <a href="admin-ajouterEvenement?id={{ plante.idPlante }}" class="bouton__ajouter">+</a>
             </div>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="section note-info">
-            <div class="dreamplante__entete">
+            <div class="dreamplante__entete margin">
                 <h2 class="section-title">Notes</h2>
                 <a href="admin-ajouterNote?id={{ plante.idPlante }}" class="bouton__ajouter">+</a>
             </div>
@@ -51,8 +51,11 @@
                 <div class="notes-list">
                     {% for note in notes %}
                         <div class="note-item">
-                            <p><strong>Titre:</strong> {{ note.titre }}</p>
-                            <p><strong>Contenu:</strong> {{ note.contenu }}</p>
+                            <div class="note-item-flex">
+                                <p><strong>Titre:</strong> {{ note.titre }}</p>
+                                <p><strong>Contenu:</strong> {{ note.contenu }}</p>
+                            </div>
+                            <a href="admin-deleteNote?id={{ note.idNote }}" class="bouton__retirer">-</a>
                         </div>
                     {% endfor %}
                 </div>
