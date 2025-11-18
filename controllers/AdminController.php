@@ -417,6 +417,23 @@ class AdminController {
         }
     }
 
+    public function deleteEvenement($data){
+        session_start();
+        if (!isset($_SESSION['nomUtilisateurAdmin'])) {
+            View::redirect('connexion');
+            exit;
+        }
+        
+        $evenement = new Evenement;
+        $delete = $evenement->delete($data['id']);
+
+        if($delete){
+            return View::redirect('admin-planteInfo?id=' . $data['idPlante']);
+        }else{
+            return View::render('error', ['msg'=>'Could not delete!']);
+        }
+    }
+
     // --------- Notes ---------
     public function addNote($id){
         session_start();

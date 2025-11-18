@@ -29,10 +29,13 @@
             {% if evenements is not empty %}
                 <div class="events-list">
                     {% for evenement in evenements %}
-                        <div class="event-item">
-                            <p><strong>Date:</strong> {{ evenement.date }}</p>
-                            <p><strong>Type d'événement:</strong> {{ evenement.typeEvenement }}</p>
-                            <p><strong>Commentaire:</strong> {{ evenement.commentaire }}</p>
+                        <div class="note-item">
+                            <div class="note-item-flex">
+                                <p><strong>Date:</strong> {{ evenement.date }}</p>
+                                <p><strong>Type d'événement:</strong> {{ evenement.typeEvenement }}</p>
+                                <p><strong>Commentaire:</strong> {{ evenement.commentaire }}</p>
+                            </div>
+                            <a href="admin-supprimerEvenement?id={{ evenement.idEvenement }}&idPlante={{ plante.idPlante }}" class="bouton__retirer">-</a>
                         </div>
                     {% endfor %}
                 </div>
