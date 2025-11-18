@@ -26,7 +26,6 @@ class AdminController {
             $checkuser = $admin->checkAdmin($data['nomUtilisateur'], $data['motDePasse']);
 
             if($checkuser){
-                var_dump($_SESSION);
                 return View::redirect('admin');
             }else{
                 $errors['message'] = 'Informations de connexion invalide !';
@@ -34,7 +33,6 @@ class AdminController {
             }
         }else{
             $errors['message'] = 'Informations de connexion invalide !';
-            // var_dump($errors);
             return View::render('connexion/index-admin', ['errors'=>$errors, 'admin'=>$data]);
         }
     }
@@ -66,10 +64,13 @@ class AdminController {
             $icon['iconBase64'] = base64_encode($icon['iconData']);
         }
 
+        $user = $_SESSION;
+
         return View::render('admin/index', [
             'plantes' => $plantes,
             'utilisateurs' => $utilisateurs,
-            'icons' => $icons
+            'icons' => $icons,
+            'user' => $user
         ]);
     }
 

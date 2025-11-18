@@ -1,5 +1,6 @@
 {{ include('layouts/headerAdmin.php', {title:'Dreamplante Admin'}) }}
-<aside>
+<aside class="admin-nav">
+    <p class="admin-p"> Bonjour {{ user.nomUtilisateurAdmin }}</p>
     <a class="dreamplante__deconnexion" href="logout">Déconnexion</a>
 </aside>
 

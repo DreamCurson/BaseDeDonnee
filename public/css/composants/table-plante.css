@@ -1,3 +1,15 @@
+.admin-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-p {
+  margin-left: 10px;
+}
+
 .table-plante-boite {
   padding: 10px;
   padding-top: 20px;
